@@ -55,7 +55,7 @@ A production-grade, automated documentation engine that turns your Python code i
 This project is pre-configured to host on **GitHub Pages**.
 
 - **Workflow**: Every push to `main` triggers an automated integrity check. If it passes, the site is built and deployed to your GitHub repository's `gh-pages` branch.
-- **Live URL**: `https://<your-username>.github.io/AutoCodeDoc/`
+- **Live URL**: `https://koffandaff.github.io/AutoCodeDoc/`
 
 ---
 
