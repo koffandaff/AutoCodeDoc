@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pydantic
+mkdocs<2.0.0
+mkdocs-material
+mkdocstrings[python]
+mkdocs-gen-files
+mkdocs-literate-nav
+mkdocs-section-index
+mkdocs-jupyter
+diagrams

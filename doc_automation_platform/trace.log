@@ -1,0 +1,54 @@
+DEBUG   -  Loading configuration file: E:\AutoCodeDoc\doc_automation_platform\mkdocs.yml
+DEBUG   -  Loaded theme configuration for 'material' from 'C:\Users\Dhruvil\AppData\Local\Programs\Python\Python313\Lib\site-packages\material\templates\mkdocs_theme.yml': {'language': 'en', 'direction': None, 'features': [], 'font': {'text': 'Roboto', 'code': 'Roboto Mono'}, 'icon': None, 'favicon': 'assets/images/favicon.png', 'static_templates': ['404.html']}
+
+ \u2502  \u26a0  WARNING – MkDocs 2.0 is incompatible with Material for MkDocs
+ \u2502
+ \u2502  MkDocs 2.0 introduces backward-incompatible changes:
+ \u2502
+ \u2502  × All plugins will stop working – the plugin system has been removed
+ \u2502  × All theme overrides will break – the theming system has been rewritten
+ \u2502  × No migration path exists – existing projects cannot be upgraded
+ \u2502  × Closed contribution model – community members can't report bugs
+ \u2502  × Currently unlicensed – unsuitable for production use
+ \u2502
+ \u2502  Our full analysis:
+ \u2502
+ \u2502  https://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/
+
+ERROR   -  Config value 'plugins': The "gen-files" plugin is not installed
+DEBUG   -  Config value 'config_file_path' = 'E:\\AutoCodeDoc\\doc_automation_platform\\mkdocs.yml'
+DEBUG   -  Config value 'site_name' = 'Developer Platform'
+DEBUG   -  Config value 'nav' = ['SUMMARY.md']
+DEBUG   -  Config value 'pages' = None
+DEBUG   -  Config value 'exclude_docs' = None
+DEBUG   -  Config value 'draft_docs' = None
+DEBUG   -  Config value 'not_in_nav' = None
+DEBUG   -  Config value 'site_url' = None
+DEBUG   -  Config value 'site_description' = 'Production-grade API and Architecture Documentation'
+DEBUG   -  Config value 'site_author' = None
+DEBUG   -  Config value 'theme' = Theme(name='material', dirs=['C:\\Users\\Dhruvil\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\material\\templates', 'C:\\Users\\Dhruvil\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\mkdocs\\templates'], static_templates={'sitemap.xml', '404.html'}, name='material', locale=Locale('en'), language='en', direction=None, features=['content.code.copy'], font={'text': 'Roboto', 'code': 'Roboto Mono'}, icon=None, favicon='assets/images/favicon.png', palette=[{'media': '(prefers-color-scheme: light)', 'scheme': 'default', 'primary': 'indigo', 'accent': 'indigo'}, {'media': '(prefers-color-scheme: dark)', 'scheme': 'slate', 'primary': 'indigo', 'accent': 'indigo'}])
+DEBUG   -  Config value 'docs_dir' = 'E:\\AutoCodeDoc\\doc_automation_platform\\docs'
+DEBUG   -  Config value 'site_dir' = 'E:\\AutoCodeDoc\\doc_automation_platform\\site'
+DEBUG   -  Config value 'copyright' = None
+DEBUG   -  Config value 'google_analytics' = None
+DEBUG   -  Config value 'dev_addr' = _IpAddressValue(host='127.0.0.1', port=8000)
+DEBUG   -  Config value 'use_directory_urls' = True
+DEBUG   -  Config value 'repo_url' = None
+DEBUG   -  Config value 'repo_name' = None
+DEBUG   -  Config value 'edit_uri_template' = None
+DEBUG   -  Config value 'edit_uri' = None
+DEBUG   -  Config value 'extra_css' = []
+DEBUG   -  Config value 'extra_javascript' = []
+DEBUG   -  Config value 'extra_templates' = []
+DEBUG   -  Config value 'markdown_extensions' = ['toc', 'tables', 'fenced_code', 'pymdownx.snippets', 'pymdownx.superfences']
+DEBUG   -  Config value 'mdx_configs' = None
+DEBUG   -  Config value 'strict' = False
+DEBUG   -  Config value 'remote_branch' = 'gh-pages'
+DEBUG   -  Config value 'remote_name' = 'origin'
+DEBUG   -  Config value 'extra' = {}
+DEBUG   -  Config value 'plugins' = ['search', {}, {}, {'literate-nav': {'nav_file': 'SUMMARY.md'}}, 'section-index']
+DEBUG   -  Config value 'hooks' = []
+DEBUG   -  Config value 'watch' = []
+DEBUG   -  Config value 'validation' = {}
+
+Aborted with a configuration error!
