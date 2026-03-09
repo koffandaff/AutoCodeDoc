@@ -10,6 +10,40 @@ A production-grade, automated documentation engine that turns your Python code i
 - **Doc Integrity Checker**: A recursive guardrail (`check_doc_sync.py`) that ensures all Pydantic fields have descriptions before allowing a build.
 - **Single-Command Pipeline**: Run `python scripts/run_pipeline.py` to check integrity, generate diagrams, and serve/build the site in one go.
 
+---
+
+## Outputs: 
+
+1. ### DocFormat:
+   <img width="1686" height="975" alt="image" src="https://github.com/user-attachments/assets/8721cbed-db87-47d3-a41a-d5e4bf46c439" />
+
+2. ### CI/CD Pipeline Testcase
+   
+   * ### Case1: (Error in auto document as no proper comment strucutre)
+     
+      <img width="903" height="303" alt="image" src="https://github.com/user-attachments/assets/eabf637c-8c00-4748-ad5f-d5e66a72248d" />
+      <img width="1439" height="266" alt="image" src="https://github.com/user-attachments/assets/51e0a3f8-a5cf-4767-a54b-673a2ee76d58" />
+      
+   * ### Case2 : (Structured Code)
+     
+      <img width="1011" height="488" alt="image" src="https://github.com/user-attachments/assets/e513feb6-0dbe-49cf-9cd5-2b7d090fef20" />
+      <img width="1424" height="379" alt="image" src="https://github.com/user-attachments/assets/826a7394-d9c3-4263-9804-79d0c6fbccfe" />
+      (Pages built right after the code is pushed and there's a change in backend file in that commit)
+     
+4. ### Results:
+   
+   * ### Before Case2 commit:
+     
+        <img width="1874" height="926" alt="image" src="https://github.com/user-attachments/assets/59836f20-5275-4702-bb6e-7da950ed1dc7" />
+        
+   * ### After Case2 Push(notification docs is added in Api documentation and others as well):
+   * 
+        <img width="1827" height="961" alt="560569375-fbce20c6-685e-42fd-925f-76c90c28a419" src="https://github.com/user-attachments/assets/fbd985a9-a438-4757-b460-7b9825b04d65" />
+
+
+
+
+---
 ## Tech Stack
 
 - **Core**: Python 3.x, FastAPI, Pydantic v2
