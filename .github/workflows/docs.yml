@@ -1,0 +1,41 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: doc_automation_platform
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: doc_automation_platform/requirements.txt
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          # Path adjustment for generation scripts
+          echo "PYTHONPATH=$GITHUB_WORKSPACE/doc_automation_platform/backend" >> $GITHUB_ENV
+
+      - name: Documentation Integrity Check
+        run: |
+          python scripts/check_doc_sync.py
+
+      - name: Deploy to GitHub Pages
+        run: |
+          mkdocs gh-deploy --force
