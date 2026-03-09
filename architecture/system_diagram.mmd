@@ -1,0 +1,68 @@
+graph TD
+    subgraph ClientLayer ["Client Layer"]
+        UI["Web Interface / Mobile App"]
+    end
+
+    subgraph APILayer ["API Layer (Routes)"]
+        api_main["main.py"]
+        api_auth["auth.py"]
+        api_billing["billing.py"]
+        api_inventory["inventory.py"]
+        api_notifications["notifications.py"]
+        api_organizations["organizations.py"]
+        api_payments["payments.py"]
+        api_users["users.py"]
+        api_vehicles["vehicles.py"]
+    end
+
+    subgraph ServiceLayer ["Service Layer (Business Logic)"]
+        svc_billing_service["billing_service.py"]
+        svc_notification_service["notification_service.py"]
+        svc_org_service["org_service.py"]
+        svc_payment_service["payment_service.py"]
+        svc_user_service["user_service.py"]
+        svc_vehicle_service["vehicle_service.py"]
+    end
+
+    subgraph DataLayer ["Data Layer (Models)"]
+        mdl_auth["auth.py"]
+        mdl_invoice["invoice.py"]
+        mdl_notification["notification.py"]
+        mdl_organization["organization.py"]
+        mdl_payment["payment.py"]
+        mdl_stock["stock.py"]
+        mdl_user["user.py"]
+        mdl_vehicle["vehicle.py"]
+    end
+
+    subgraph UtilsLayer ["Utilities"]
+        utl_formatting["formatting.py"]
+        utl_validation["validation.py"]
+    end
+
+    UI --> api_main
+    api_main --> api_auth
+    api_main --> api_billing
+    api_main --> api_inventory
+    api_main --> api_notifications
+    api_main --> api_organizations
+    api_main --> api_payments
+    api_main --> api_users
+    api_main --> api_vehicles
+    svc_user_service --> mdl_user
+    svc_billing_service --> mdl_invoice
+    svc_billing_service --> mdl_organization
+    svc_org_service --> mdl_organization
+    api_vehicles --> mdl_vehicle
+    api_vehicles --> svc_vehicle_service
+    api_payments --> svc_payment_service
+    api_inventory --> mdl_stock
+    api_organizations --> mdl_organization
+    api_organizations --> svc_org_service
+    api_billing --> mdl_invoice
+    api_billing --> mdl_organization
+    api_billing --> svc_billing_service
+    api_notifications --> mdl_notification
+    api_notifications --> svc_notification_service
+    api_users --> mdl_user
+    api_users --> svc_user_service
