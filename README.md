@@ -41,6 +41,14 @@ A production-grade, automated documentation engine that turns your Python code i
    * 
         <img width="1827" height="961" alt="560569375-fbce20c6-685e-42fd-925f-76c90c28a419" src="https://github.com/user-attachments/assets/fbd985a9-a438-4757-b460-7b9825b04d65" />
 
+ 5. ### Others:
+   * ### Automated Database Schema:
+     
+       <img width="1383" height="905" alt="image" src="https://github.com/user-attachments/assets/dfe7c57d-c958-4ac1-bd72-1df5dd277870" />
+
+   * ### System Diagrams:
+     
+       <img width="1332" height="853" alt="image" src="https://github.com/user-attachments/assets/4b415b31-b9cc-4076-b7fd-665ca6d7ae98" />
 
 
 
