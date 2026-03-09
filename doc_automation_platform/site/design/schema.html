@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://your-username.github.io/AutoCodeDoc/design/schema.html">
+        <link rel="canonical" href="https://koffandaff.github.io/AutoCodeDoc/design/schema.html">
       
       
         <link rel="prev" href="routes.html">
@@ -420,6 +420,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../app/api/notifications.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    notifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../app/api/organizations.html" class="md-nav__link">
         
   
@@ -696,6 +724,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app/models/core/notification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    notification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1136,6 +1192,34 @@
     
   
     billing_service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app/services/notification_service.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    notification_service
   
 
     
@@ -1790,6 +1874,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#entity-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity: Notification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entity-notificationcreate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity: NotificationCreate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#entity-baseentity" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2025,6 +2131,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#entity-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity: Notification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entity-notificationcreate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity: NotificationCreate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#entity-baseentity" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2234,6 +2362,18 @@
         int quantity
         float unit_price
     }
+    Notification {
+        str id
+        int user_id
+        Literal type
+        str message
+        bool read
+    }
+    NotificationCreate {
+        int user_id
+        Literal type
+        str message
+    }
     Organization {
         str id
         str created_at
@@ -2334,6 +2474,82 @@
 <td><code>int</code></td>
 <td>The duration in seconds until the token expires.</td>
 <td><code>3600</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="entity-notification">Entity: Notification</h3>
+<p>Notification model for system alerts and user messages.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>str</code></td>
+<td>Unique identifier for the notification.</td>
+<td><em>Required</em></td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td><code>int</code></td>
+<td>The ID of the user receiving the notification.</td>
+<td><em>Required</em></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>Literal</code></td>
+<td>The delivery channel.</td>
+<td><em>Required</em></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>str</code></td>
+<td>The actual notification content.</td>
+<td><em>Required</em></td>
+</tr>
+<tr>
+<td><code>read</code></td>
+<td><code>bool</code></td>
+<td>Whether the notification has been read.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="entity-notificationcreate">Entity: NotificationCreate</h3>
+<p>Payload to trigger a new notification.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user_id</code></td>
+<td><code>int</code></td>
+<td>The ID of the target user.</td>
+<td><em>Required</em></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>Literal</code></td>
+<td>The desired delivery channel.</td>
+<td><em>Required</em></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>str</code></td>
+<td>The message payload.</td>
+<td><em>Required</em></td>
 </tr>
 </tbody>
 </table>

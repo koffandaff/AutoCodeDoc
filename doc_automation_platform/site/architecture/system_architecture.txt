@@ -5,6 +5,7 @@ FastAPI Application Architecture Tree
 │    ├── auth
 │    ├── billing
 │    ├── inventory
+│    ├── notifications
 │    ├── organizations
 │    ├── payments
 │    ├── users
@@ -12,6 +13,7 @@ FastAPI Application Architecture Tree
 │
 ├── Service Layer
 │    ├── billing_service
+│    ├── notification_service
 │    ├── org_service
 │    ├── payment_service
 │    ├── user_service
@@ -20,6 +22,7 @@ FastAPI Application Architecture Tree
 ├── Data Models
      ├── auth
      ├── invoice
+     ├── notification
      ├── organization
      ├── payment
      ├── stock

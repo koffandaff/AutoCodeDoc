@@ -8,6 +8,7 @@ graph TD
         api_auth["auth.py"]
         api_billing["billing.py"]
         api_inventory["inventory.py"]
+        api_notifications["notifications.py"]
         api_organizations["organizations.py"]
         api_payments["payments.py"]
         api_users["users.py"]
@@ -16,6 +17,7 @@ graph TD
 
     subgraph ServiceLayer ["Service Layer (Business Logic)"]
         svc_billing_service["billing_service.py"]
+        svc_notification_service["notification_service.py"]
         svc_org_service["org_service.py"]
         svc_payment_service["payment_service.py"]
         svc_user_service["user_service.py"]
@@ -25,6 +27,7 @@ graph TD
     subgraph DataLayer ["Data Layer (Models)"]
         mdl_auth["auth.py"]
         mdl_invoice["invoice.py"]
+        mdl_notification["notification.py"]
         mdl_organization["organization.py"]
         mdl_payment["payment.py"]
         mdl_stock["stock.py"]
@@ -41,6 +44,7 @@ graph TD
     api_main --> api_auth
     api_main --> api_billing
     api_main --> api_inventory
+    api_main --> api_notifications
     api_main --> api_organizations
     api_main --> api_payments
     api_main --> api_users
@@ -49,6 +53,8 @@ graph TD
     api_billing --> mdl_organization
     api_billing --> svc_billing_service
     api_inventory --> mdl_stock
+    api_notifications --> mdl_notification
+    api_notifications --> svc_notification_service
     api_organizations --> mdl_organization
     api_organizations --> svc_org_service
     api_payments --> svc_payment_service

@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://your-username.github.io/AutoCodeDoc/design/features.html">
+        <link rel="canonical" href="https://koffandaff.github.io/AutoCodeDoc/design/features.html">
       
       
         <link rel="prev" href="../contributing.html">
@@ -422,6 +422,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../app/api/notifications.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    notifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../app/api/organizations.html" class="md-nav__link">
         
   
@@ -698,6 +726,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app/models/core/notification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    notification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1138,6 +1194,34 @@
     
   
     billing_service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app/services/notification_service.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    notification_service
   
 
     
@@ -1707,6 +1791,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#notification-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notification Service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#app.services.notification_service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        notification_service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#app.services.notification_service.NotificationService" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NotificationService
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NotificationService">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#app.services.notification_service.NotificationService.send_notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        send_notification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#org-service" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2020,6 +2154,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#notification-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notification Service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#app.services.notification_service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        notification_service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#app.services.notification_service.NotificationService" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NotificationService
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NotificationService">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#app.services.notification_service.NotificationService.send_notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        send_notification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#org-service" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2192,7 +2376,7 @@
 
 <h1 id="features-connection">Features Connection</h1>
 <p>How the platform's core features connect through the service layer. Each service encapsulates business logic for a specific domain.</p>
-<p><strong>Total Services Detected</strong>: 5</p>
+<p><strong>Total Services Detected</strong>: 6</p>
 <hr />
 <h2 id="billing-service">Billing Service</h2>
 <p><strong>Module</strong>: <code>app.services.billing_service</code></p>
@@ -2331,6 +2515,235 @@
     </div>
 
 </div>
+
+
+
+  </div>
+
+    </div>
+
+</div><hr />
+<h2 id="notification-service">Notification Service</h2>
+<p><strong>Module</strong>: <code>app.services.notification_service</code></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>🔄 send_notification(user_id, notif_type, message)</code></td>
+<td>Dispatch a notification to a specific user.</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="app.services.notification_service"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="app.services.notification_service.NotificationService" class="doc doc-heading">
+            <code>NotificationService</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>Service handling notification delivery logic.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="app.services.notification_service.NotificationService.send_notification" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">send_notification</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">notif_type</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Dispatch a notification to a specific user.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>user_id</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The recipient's user ID.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>notif_type</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The channel (email, sms, push).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>message</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The content to deliver.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>bool</code></td>            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if dispatched successfully, False otherwise.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If an unsupported notification type is provided.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
 
 
 

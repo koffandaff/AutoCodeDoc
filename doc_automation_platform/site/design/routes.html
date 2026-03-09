@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://your-username.github.io/AutoCodeDoc/design/routes.html">
+        <link rel="canonical" href="https://koffandaff.github.io/AutoCodeDoc/design/routes.html">
       
       
         <link rel="prev" href="diagrams.html">
@@ -422,6 +422,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../app/api/notifications.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    notifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../app/api/organizations.html" class="md-nav__link">
         
   
@@ -698,6 +726,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app/models/core/notification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    notification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1138,6 +1194,34 @@
     
   
     billing_service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app/services/notification_service.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    notification_service
   
 
     
@@ -1829,6 +1913,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#app.api.notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        notifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#app.api.notifications.trigger_notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        trigger_notification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#organizations" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2152,6 +2269,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#app.api.notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        notifications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#app.api.notifications.trigger_notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        trigger_notification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#organizations" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2324,7 +2474,7 @@
 
 <h1 id="api-routes-listing">API Routes Listing</h1>
 <p>Comprehensive list of all endpoints and their documentation, auto-detected from FastAPI routers.</p>
-<p><strong>Total API Modules Detected</strong>: 7</p>
+<p><strong>Total API Modules Detected</strong>: 8</p>
 <hr />
 <h2 id="auth">Auth</h2>
 <p><strong>Module</strong>: <code>app.api.auth</code></p>
@@ -2783,6 +2933,158 @@ If valid, a JWT token is generated for subsequent requests.</p>
             <td>
               <div class="doc-md-description">
                 <p>The updated item with its mapped physical location.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><hr />
+<h2 id="notifications">Notifications</h2>
+<p><strong>Module</strong>: <code>app.api.notifications</code></p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>⚡ trigger_notification(payload)</code></td>
+<td>Trigger a new system notification.</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="app.api.notifications"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="app.api.notifications.trigger_notification" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">trigger_notification</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Trigger a new system notification.</p>
+<p>This endpoint accepts a notification payload and dispatches it through the appropriate channel
+(email, SMS, or push) to the specified user.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>payload</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="NotificationCreate (app.models.core.notification.NotificationCreate)" href="../app/models/core/notification.html#app.models.core.notification.NotificationCreate">NotificationCreate</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The NotificationCreate model containing target user and message data.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>Dict</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A confirmation object indicating success or failure.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="fastapi.HTTPException">HTTPException</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>400: If the notification service rejects the payload.</p>
               </div>
             </td>
           </tr>

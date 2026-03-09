@@ -2,7 +2,7 @@
 
 Comprehensive list of all endpoints and their documentation, auto-detected from FastAPI routers.
 
-**Total API Modules Detected**: 7
+**Total API Modules Detected**: 8
 
 ---
 
@@ -39,6 +39,18 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 | `⚡ map_inventory_location(sku, aisle, shelf, bin_num)` | Map an inventory item to a specific physical warehouse location. |
 
 ::: app.api.inventory
+
+---
+
+## Notifications
+
+**Module**: `app.api.notifications`
+
+| Endpoint | Description |
+|----------|-------------|
+| `⚡ trigger_notification(payload)` | Trigger a new system notification. |
+
+::: app.api.notifications
 
 ---
 

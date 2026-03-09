@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://your-username.github.io/AutoCodeDoc/design/diagrams.html">
+        <link rel="canonical" href="https://koffandaff.github.io/AutoCodeDoc/design/diagrams.html">
       
       
         <link rel="prev" href="features.html">
@@ -422,6 +422,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../app/api/notifications.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    notifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../app/api/organizations.html" class="md-nav__link">
         
   
@@ -698,6 +726,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app/models/core/notification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    notification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1138,6 +1194,34 @@
     
   
     billing_service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app/services/notification_service.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    notification_service
   
 
     
@@ -1784,6 +1868,7 @@ Connections are auto-discovered by parsing Python <code>import</code> statements
         api_auth["auth.py"]
         api_billing["billing.py"]
         api_inventory["inventory.py"]
+        api_notifications["notifications.py"]
         api_organizations["organizations.py"]
         api_payments["payments.py"]
         api_users["users.py"]
@@ -1792,6 +1877,7 @@ Connections are auto-discovered by parsing Python <code>import</code> statements
 
     subgraph ServiceLayer ["Service Layer (Business Logic)"]
         svc_billing_service["billing_service.py"]
+        svc_notification_service["notification_service.py"]
         svc_org_service["org_service.py"]
         svc_payment_service["payment_service.py"]
         svc_user_service["user_service.py"]
@@ -1801,6 +1887,7 @@ Connections are auto-discovered by parsing Python <code>import</code> statements
     subgraph DataLayer ["Data Layer (Models)"]
         mdl_auth["auth.py"]
         mdl_invoice["invoice.py"]
+        mdl_notification["notification.py"]
         mdl_organization["organization.py"]
         mdl_payment["payment.py"]
         mdl_stock["stock.py"]
@@ -1817,6 +1904,7 @@ Connections are auto-discovered by parsing Python <code>import</code> statements
     api_main --&gt; api_auth
     api_main --&gt; api_billing
     api_main --&gt; api_inventory
+    api_main --&gt; api_notifications
     api_main --&gt; api_organizations
     api_main --&gt; api_payments
     api_main --&gt; api_users
@@ -1825,6 +1913,8 @@ Connections are auto-discovered by parsing Python <code>import</code> statements
     api_billing --&gt; mdl_organization
     api_billing --&gt; svc_billing_service
     api_inventory --&gt; mdl_stock
+    api_notifications --&gt; mdl_notification
+    api_notifications --&gt; svc_notification_service
     api_organizations --&gt; mdl_organization
     api_organizations --&gt; svc_org_service
     api_payments --&gt; svc_payment_service

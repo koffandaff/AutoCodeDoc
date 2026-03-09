@@ -33,4 +33,4 @@ class UserCreate(BaseModel):
     """Model used to create a new User entry."""
     username: str = Field(description="The chosen username.")
     email: str = Field(description="The associated email address.")
-    bio: Optional[str] = Field(default=None)
+    bio: Optional[str] = Field(default=None, description="A short biography for the profile.")
