@@ -95,6 +95,13 @@ When code is pushed with valid syntax and no critical Sphinx errors, the pipelin
 
 <img width="1051" height="377" alt="image" src="https://github.com/user-attachments/assets/05142cf9-d82a-4979-9ddc-534ebe5907eb" />
 
+<img width="1090" height="862" alt="image" src="https://github.com/user-attachments/assets/584406f8-d409-4b7d-b19f-70a406f95856" />
+
+#### Doc added
+
+<img width="1578" height="985" alt="image" src="https://github.com/user-attachments/assets/385c8993-0bf5-48ff-befd-8ef115319afb" />
+
+
 *Placeholder: Screenshot of a passing GitHub Actions run*
 
 ### Case 2: Failed Build (Syntax/Import Error)
