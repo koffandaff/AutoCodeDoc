@@ -103,6 +103,10 @@ jobs:
               body: body
             })
 
+      - name: Create Root Redirect
+        run: |
+          echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=sphinx/index.html" /></head><body>Redirecting to Sphinx Docs...</body></html>' > site/index.html
+
       - name: Deploy to GitHub Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
