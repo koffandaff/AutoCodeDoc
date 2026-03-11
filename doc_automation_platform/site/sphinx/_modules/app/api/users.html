@@ -552,6 +552,10 @@ window.runMermaid = runMermaid;</script>
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve a user from the database by their unique ID.</span>
+<span class="sd">    </span>
+<span class="sd">    # INTENTIONAL SYNTAX ERROR BELOW</span>
+<span class="sd">    if (user_id &gt; 0: </span>
+<span class="sd">        pass</span>
 
 <span class="sd">    This endpoint queries the active database for a user matching the provided ID.</span>
 <span class="sd">    If the user has been deactivated or does not exist, a 404 is returned.</span>

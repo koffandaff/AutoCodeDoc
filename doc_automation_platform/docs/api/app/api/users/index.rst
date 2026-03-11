@@ -55,6 +55,10 @@ Module Contents
 
    Retrieve a user from the database by their unique ID.
 
+   # INTENTIONAL SYNTAX ERROR BELOW
+   if (user_id > 0:
+       pass
+
    This endpoint queries the active database for a user matching the provided ID.
    If the user has been deactivated or does not exist, a 404 is returned.
 

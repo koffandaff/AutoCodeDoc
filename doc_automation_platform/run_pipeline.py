@@ -310,7 +310,7 @@ def main():
     os.makedirs(SPHINX_OUT, exist_ok=True)
     sphinx_success = run_step(
         "Sphinx Build (Primary Docs)",
-        f"{python_exe} -m sphinx -b html \"{SPHINX_SRC}\" \"{SPHINX_OUT}\"",
+        f"{python_exe} -m sphinx -b html -W \"{SPHINX_SRC}\" \"{SPHINX_OUT}\"",
         cwd=str(PROJECT_ROOT)
     )
 
