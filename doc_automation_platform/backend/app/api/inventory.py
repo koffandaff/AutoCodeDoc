@@ -3,7 +3,7 @@ Inventory API Endpoints
 =======================
 
 Provides endpoints for managing physical inventory and system status across
-multiple warehouse facilities.
+multiple warehouse facilities. 
 """
 
 from fastapi import APIRouter
