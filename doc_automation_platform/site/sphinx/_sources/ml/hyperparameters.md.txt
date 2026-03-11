@@ -1,0 +1,179 @@
+# Hyperparameter Schemas
+
+> Auto-extracted configuration schemas from dataclasses and Pydantic models
+> used throughout the neural-lam training pipeline.
+
+## Training Configuration
+
+The training pipeline is configured via a hierarchical schema. Below are the
+key hyperparameter groups, their types, defaults, and constraints.
+
+### Model Hyperparameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `hidden_dim` | `int` | `64` | Hidden dimension size for all MLPs |
+| `hidden_layers` | `int` | `1` | Number of hidden layers in MLPs |
+| `processor_layers` | `int` | `4` | Number of message-passing steps in processor |
+| `mesh_aggr` | `str` | `"sum"` | Aggregation method for mesh GNN (`"sum"`, `"mean"`) |
+| `output_std` | `bool` | `False` | Whether to predict uncertainty (std dev) |
+
+### Optimizer Hyperparameters
+
+| Parameter | Type | Default | Range | Description |
+|-----------|------|---------|-------|-------------|
+| `lr` | `float` | `1e-3` | `[1e-5, 1e-1]` | Learning rate |
+| `weight_decay` | `float` | `0.0` | `[0.0, 1e-2]` | L2 regularization |
+| `scheduler` | `str` | `"cosine"` | — | LR scheduler type |
+| `warmup_steps` | `int` | `1000` | `[0, 10000]` | Linear warmup steps |
+| `max_epochs` | `int` | `200` | `[1, 1000]` | Maximum training epochs |
+| `patience` | `int` | `30` | `[5, 100]` | Early stopping patience |
+
+### Data Hyperparameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `batch_size` | `int` | `4` | Training batch size |
+| `num_workers` | `int` | `4` | DataLoader worker processes |
+| `ar_steps` | `int` | `1` | Autoregressive rollout steps during training |
+| `control_only` | `bool` | `False` | Use only control member (no ensemble) |
+
+## Schema Visualization
+
+```{mermaid}
+classDiagram
+    class TrainingConfig {
+        +ModelConfig model
+        +OptimizerConfig optimizer
+        +DataConfig data
+        +str experiment_name
+        +int seed
+    }
+
+    class ModelConfig {
+        +int hidden_dim = 64
+        +int hidden_layers = 1
+        +int processor_layers = 4
+        +str mesh_aggr = "sum"
+        +bool output_std = False
+        +str model_type = "hi_lam"
+    }
+
+    class OptimizerConfig {
+        +float lr = 1e-3
+        +float weight_decay = 0.0
+        +str scheduler = "cosine"
+        +int warmup_steps = 1000
+        +int max_epochs = 200
+        +int patience = 30
+    }
+
+    class DataConfig {
+        +int batch_size = 4
+        +int num_workers = 4
+        +int ar_steps = 1
+        +bool control_only = False
+        +str dataset_name
+        +str zarr_path
+    }
+
+    TrainingConfig --> ModelConfig
+    TrainingConfig --> OptimizerConfig
+    TrainingConfig --> DataConfig
+```
+
+## Example Configuration
+
+```python
+from dataclasses import dataclass, field
+from typing import Optional
+
+
+@dataclass
+class ModelConfig:
+    """
+    Configuration for the GNN model architecture.
+
+    Attributes
+    ----------
+    hidden_dim : int
+        Hidden dimension size for all MLPs. Controls model capacity.
+    hidden_layers : int
+        Number of hidden layers in each MLP block.
+    processor_layers : int
+        Number of message-passing steps in the mesh processor.
+    mesh_aggr : str
+        Aggregation method for mesh GNN. One of ``"sum"`` or ``"mean"``.
+    output_std : bool
+        Whether to predict uncertainty (standard deviation) alongside mean.
+    model_type : str
+        Model variant to use. One of ``"graph_lam"``, ``"hi_lam"``,
+        ``"hi_lam_parallel"``.
+    """
+
+    hidden_dim: int = 64
+    hidden_layers: int = 1
+    processor_layers: int = 4
+    mesh_aggr: str = "sum"
+    output_std: bool = False
+    model_type: str = "hi_lam"
+
+
+@dataclass
+class OptimizerConfig:
+    """
+    Configuration for the optimizer and learning rate schedule.
+
+    Attributes
+    ----------
+    lr : float
+        Initial learning rate.
+    weight_decay : float
+        L2 regularization coefficient.
+    scheduler : str
+        Learning rate scheduler type. One of ``"cosine"``, ``"step"``,
+        ``"plateau"``.
+    warmup_steps : int
+        Number of linear warmup steps before applying the scheduler.
+    max_epochs : int
+        Maximum number of training epochs.
+    patience : int
+        Early stopping patience (epochs without improvement).
+    """
+
+    lr: float = 1e-3
+    weight_decay: float = 0.0
+    scheduler: str = "cosine"
+    warmup_steps: int = 1000
+    max_epochs: int = 200
+    patience: int = 30
+```
+
+## Hyperparameter Relationships
+
+```{mermaid}
+graph TD
+    HD["hidden_dim"] -->|"affects"| CAP["Model Capacity"]
+    PL["processor_layers"] -->|"affects"| CAP
+    CAP -->|"increases"| MEM["Memory Usage"]
+    CAP -->|"increases"| PERF["Performance"]
+
+    LR["learning_rate"] -->|"controls"| CONV["Convergence Speed"]
+    WD["weight_decay"] -->|"controls"| REG["Regularization"]
+    BS["batch_size"] -->|"affects"| CONV
+    BS -->|"affects"| MEM
+
+    AR["ar_steps"] -->|"increases"| QUAL["Forecast Quality"]
+    AR -->|"increases"| MEM
+
+    style CAP fill:#e8f5e9
+    style MEM fill:#ffccbc
+    style PERF fill:#c8e6c9
+    style CONV fill:#fff3e0
+```
+
+## See Also
+
+- [Model Architecture](model_architecture.md) — Network structure details
+- [Training Pipeline](training_pipeline.md) — Data processing configuration
+- [Evaluation Metrics](evaluation.md) — How performance is measured

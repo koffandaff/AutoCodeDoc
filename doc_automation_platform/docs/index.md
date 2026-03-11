@@ -19,7 +19,7 @@ This site demonstrates the power of **Docs as Code**. It automatically extracts 
 *   **[Installation Guide](installation.md)** - Get up and running.
 *   **[Tutorials](tutorials/weather_model_training.ipynb)** - Learn with notebooks.
 *   **[Navigation Test](test.md)** - Verify the system!
-
+*   **[Sphinx Version](sphinx/)** - Toggle to the Sphinx representation of this documentation.
 ## Working Locally
 
 To see the live docs when changing code:

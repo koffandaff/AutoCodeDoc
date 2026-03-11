@@ -1,0 +1,28 @@
+# AutoCodeDoc Platform - Sphinx Documentation
+
+Welcome to the Sphinx version of the AutoCodeDoc Platform documentation. 
+
+This documentation is built alongside MkDocs. By supporting both, we ensure better alignment with the GSoC proposal and provide viewers the flexibility to choose their preferred documentation format.
+
+## Toggling Documentation
+* [Switch to MkDocs Version](../index.html)
+
+## Modules
+
+We can automatically generate documentation for our backend modules using Sphinx's autodoc.
+
+```{toctree}
+:maxdepth: 2
+:caption: Contents:
+
+../docs/architecture.md
+../docs/installation.md
+../docs/usage.md
+../docs/test.md
+../docs/contributing.md
+../docs/design/features.md
+../docs/design/diagrams.md
+../docs/design/routes.md
+../docs/design/schema.md
+api/modules
+```

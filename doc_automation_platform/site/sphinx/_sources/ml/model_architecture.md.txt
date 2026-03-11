@@ -1,0 +1,118 @@
+# Model Architecture
+
+> Documentation for the neural network architecture used in the neural-lam
+> weather prediction system.
+
+## Graph Neural Network Architecture
+
+The neural-lam project implements Graph Neural Networks (GNNs) for weather
+forecasting. The core models operate on a hierarchical mesh structure:
+
+```{mermaid}
+graph TD
+    subgraph InputLayer ["📥 Input Layer"]
+        GRID["Grid Points\n(lat/lon weather stations)"]
+    end
+
+    subgraph Encoder ["🔄 Grid-to-Mesh Encoder"]
+        G2M["G2M GNN\n(bipartite graph)"]
+    end
+
+    subgraph Processor ["⚙️ Mesh Processor"]
+        direction TB
+        L1["Level 1 Mesh\n(finest resolution)"]
+        L2["Level 2 Mesh\n(intermediate)"]
+        L3["Level 3 Mesh\n(coarsest resolution)"]
+        L1 <--> L2 <--> L3
+    end
+
+    subgraph Decoder ["🔄 Mesh-to-Grid Decoder"]
+        M2G["M2G GNN\n(bipartite graph)"]
+    end
+
+    subgraph OutputLayer ["📤 Output Layer"]
+        PRED["Predictions\n(weather variables)"]
+    end
+
+    GRID --> G2M --> L1
+    L1 --> M2G --> PRED
+
+    style InputLayer fill:#e3f2fd,stroke:#1565c0
+    style Encoder fill:#e8f5e9,stroke:#2e7d32
+    style Processor fill:#fff3e0,stroke:#ef6c00
+    style Decoder fill:#e8f5e9,stroke:#2e7d32
+    style OutputLayer fill:#fce4ec,stroke:#c62828
+```
+
+## Model Variants
+
+| Model | Description | Mesh Levels | Key Feature |
+|-------|-------------|-------------|-------------|
+| **GraphLAM** | Single-level GNN | 1 | Flat mesh processing |
+| **Hi-LAM** | Hierarchical GNN | 2–4 | Multi-scale propagation |
+| **Hi-LAM-Parallel** | Parallel hierarchical | 2–4 | Parallel up/down passes |
+
+## Computation Graph
+
+```{mermaid}
+graph LR
+    subgraph Forward ["Forward Pass"]
+        X["Input State\n(t, t-1)"] --> EMB["Feature Embedding\n(MLP)"]
+        EMB --> ENC["Encoder GNN\n(Grid → Mesh)"]
+        ENC --> PROC["Processor GNN\n(Mesh → Mesh, L steps)"]
+        PROC --> DEC["Decoder GNN\n(Mesh → Grid)"]
+        DEC --> OUT["Output\n(Δ prediction)"]
+        OUT --> ADD["Add Residual\n(State at t)"]
+        ADD --> PRED["Prediction\n(t+1)"]
+    end
+
+    subgraph Loss ["Loss Computation"]
+        PRED --> MSE["Weighted MSE\n(per variable)"]
+        GT["Ground Truth\n(t+1)"] --> MSE
+        MSE --> TOTAL["Total Loss"]
+    end
+
+    style Forward fill:#f5f5ff,stroke:#4051b5
+    style Loss fill:#fff3e0,stroke:#ef6c00
+```
+
+## Message Passing Scheme
+
+Each GNN layer performs message passing as follows:
+
+1. **Edge Update**: Compute edge features from source/target node features
+2. **Aggregation**: Aggregate incoming edge messages per node (sum)
+3. **Node Update**: Update node features using aggregated messages + self-features
+
+```python
+# Pseudo-code for a single GNN layer
+def forward(self, x, edge_index, edge_attr):
+    """
+    Parameters
+    ----------
+    x : torch.Tensor
+        Node features of shape ``(N, d_node)``.
+    edge_index : torch.Tensor
+        Edge connectivity of shape ``(2, E)``.
+    edge_attr : torch.Tensor
+        Edge features of shape ``(E, d_edge)``.
+
+    Returns
+    -------
+    torch.Tensor
+        Updated node features of shape ``(N, d_node)``.
+    """
+    # Edge update
+    edge_msg = self.edge_mlp(cat([x[src], x[dst], edge_attr], dim=-1))
+    # Aggregate
+    agg = scatter_sum(edge_msg, dst, dim=0, dim_size=x.size(0))
+    # Node update
+    x_out = self.node_mlp(cat([x, agg], dim=-1))
+    return x_out
+```
+
+## See Also
+
+- [Training Pipeline](training_pipeline.md) — How models are trained
+- [Hyperparameters](hyperparameters.md) — Model configuration schemas
+- [Cross-Repo Flow](../architecture/cross_repo_flow.md) — Data flow between repositories

@@ -1,0 +1,127 @@
+# Training Data Pipeline
+
+> Visualization and documentation of the data flow from raw weather observations
+> to model-ready tensors.
+
+## Pipeline Overview
+
+```{mermaid}
+graph TD
+    subgraph RawData ["📦 Raw Data Sources"]
+        ERA5["ERA5 Reanalysis\n(ECMWF, global)"]
+        DANRA["DANRA\n(DMI, regional)"]
+        OBS["Observations\n(weather stations)"]
+    end
+
+    subgraph Preprocessing ["🔄 mllam-data-prep"]
+        CONFIG["config.yaml\n(variable selection,\ncoordinate mapping)"]
+        XARRAY["xarray Pipeline\n(select, regrid,\nnormalize)"]
+        ZARR[".zarr Store\n(chunked, compressed)"]
+        CONFIG --> XARRAY
+        ERA5 --> XARRAY
+        DANRA --> XARRAY
+        OBS --> XARRAY
+        XARRAY --> ZARR
+    end
+
+    subgraph Loading ["📥 neural-lam DataStore"]
+        MDP["MDPDatastore\n(reads .zarr)"]
+        SPLIT["Train/Val/Test Split\n(temporal)"]
+        WINDOW["Windowing\n(input: t-1,t → target: t+1)"]
+        NORM["Normalization\n(per-variable stats)"]
+        MDP --> SPLIT --> WINDOW --> NORM
+    end
+
+    subgraph Batching ["🔢 PyTorch DataLoader"]
+        DS["WeatherDataset\n(torch Dataset)"]
+        DL["DataLoader\n(batch, shuffle, workers)"]
+        TENSOR["Batched Tensors\n(B, T, N, F)"]
+        NORM --> DS --> DL --> TENSOR
+    end
+
+    ZARR --> MDP
+
+    style RawData fill:#e3f2fd,stroke:#1565c0
+    style Preprocessing fill:#e8f5e9,stroke:#2e7d32
+    style Loading fill:#fff3e0,stroke:#ef6c00
+    style Batching fill:#fce4ec,stroke:#c62828
+```
+
+## Data Format Specifications
+
+### Input Tensor Shape
+
+| Dimension | Symbol | Description |
+|-----------|--------|-------------|
+| Batch     | `B`    | Number of samples per training step |
+| Time      | `T`    | Number of input timesteps (typically 2) |
+| Nodes     | `N`    | Number of grid points / spatial locations |
+| Features  | `F`    | Number of weather variables |
+
+### Typical Variable Sets
+
+| Category | Variables | Units |
+|----------|-----------|-------|
+| Surface  | `2m_temperature`, `10m_u_wind`, `10m_v_wind`, `msl_pressure` | K, m/s, Pa |
+| Upper-Air | `temperature`, `geopotential`, `u_wind`, `v_wind` | K, m²/s², m/s |
+| Derived  | `wind_speed`, `relative_humidity` | m/s, % |
+
+## Normalization Strategy
+
+```{mermaid}
+graph LR
+    RAW["Raw Values\n(physical units)"] -->|"subtract mean"| CENTERED["Centered\n(zero-mean)"]
+    CENTERED -->|"divide by std"| NORMALIZED["Normalized\n(unit variance)"]
+
+    STATS["Pre-computed\nStats File\n(.zarr attrs)"] --> CENTERED
+    STATS --> NORMALIZED
+
+    style RAW fill:#ffccbc
+    style NORMALIZED fill:#c8e6c9
+    style STATS fill:#e3f2fd
+```
+
+Statistics (mean and standard deviation) are computed over the **training set only**
+and stored as attributes in the `.zarr` store. The same statistics are applied
+during validation and testing to prevent data leakage.
+
+## Data Augmentation
+
+Currently, the neural-lam pipeline uses **no spatial augmentation** (weather data
+has fixed coordinate grids). Temporal augmentation is achieved through:
+
+- **Random windowing**: Different start times within training period
+- **Multi-step rollout**: Variable forecast horizon during training
+
+## Configuration Example
+
+```yaml
+# mllam-data-prep config.yaml
+dataset:
+  name: danra_example
+  source: /data/danra/
+  variables:
+    surface:
+      - 2m_temperature
+      - 10m_u_component_of_wind
+      - 10m_v_component_of_wind
+      - mean_sea_level_pressure
+    atmosphere:
+      levels: [500, 700, 850, 1000]
+      vars:
+        - temperature
+        - geopotential
+  grid:
+    type: regular_ll
+    resolution: 0.25
+  splits:
+    train: ["1990-01-01", "2015-12-31"]
+    val: ["2016-01-01", "2017-12-31"]
+    test: ["2018-01-01", "2020-12-31"]
+```
+
+## See Also
+
+- [Model Architecture](model_architecture.md) — How the GNN consumes this data
+- [Hyperparameters](hyperparameters.md) — Training configuration
+- [Cross-Repo Flow](../architecture/cross_repo_flow.md) — Full pipeline across repos

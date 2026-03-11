@@ -1,0 +1,54 @@
+app.models package
+==================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   app.models.core
+   app.models.ecommerce
+
+Submodules
+----------
+
+app.models.auth module
+----------------------
+
+.. automodule:: app.models.auth
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+app.models.payment module
+-------------------------
+
+.. automodule:: app.models.payment
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+app.models.user module
+----------------------
+
+.. automodule:: app.models.user
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+app.models.vehicle module
+-------------------------
+
+.. automodule:: app.models.vehicle
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: app.models
+   :members:
+   :show-inheritance:
+   :undoc-members:

@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-03-11T16:25:18.975036",
+  "diagrams_generated": 3,
+  "system_architecture": {
+    "total_modules": 16,
+    "connections": 16,
+    "layers": {
+      "api": 4,
+      "services": 4,
+      "models": 6,
+      "utils": 2,
+      "core": 0
+    }
+  },
+  "er_diagram": {
+    "entities": 11,
+    "total_fields": 43,
+    "relationships": 3
+  },
+  "cross_repo_flow": {
+    "repos": [
+      "mllam-data-prep",
+      "weather-model-graphs",
+      "neural-lam"
+    ]
+  }
+}

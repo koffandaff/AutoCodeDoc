@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-03-11T16:23:47.361669",
+  "pipeline_version": "1.0.0",
+  "builds": {
+    "sphinx": {
+      "success": true,
+      "output_dir": "E:\\AutoCodeDoc\\doc_automation_platform\\site\\sphinx"
+    },
+    "mkdocs": {
+      "success": false,
+      "output_dir": "E:\\AutoCodeDoc\\doc_automation_platform\\site\\legacy-docs"
+    }
+  },
+  "coverage": {
+    "coverage_pct": 0.0,
+    "total": 0,
+    "covered": 0,
+    "missing": 0,
+    "status": "needs_improvement"
+  },
+  "diagrams": {
+    "error": "generation failed"
+  },
+  "warnings": [
+    "MkDocs build failed",
+    "Docstring coverage is 0.0%"
+  ]
+}

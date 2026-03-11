@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from app.api import users
 from app.api import auth
-from app.api import payments
 
 app = FastAPI(
     title="Developer Platform API",
@@ -11,7 +10,6 @@ app = FastAPI(
 
 app.include_router(users.router)
 app.include_router(auth.router)
-app.include_router(payments.router)
 
 @app.get("/")
 def read_root() -> dict:

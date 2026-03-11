@@ -1,0 +1,99 @@
+# System Architecture Diagram
+
+> **Auto-generated** from Python import graph analysis (AST-based).
+> Last updated: 2026-03-11 16:25:18
+
+## Overview
+
+This diagram shows the complete system architecture of the AutoCodeDoc Platform,
+with connections discovered by parsing Python `import` statements across 16 modules.
+
+```{mermaid}
+graph TD
+    subgraph ClientLayer ["🌐 Client Layer"]
+        UI["Web Interface / API Consumer"]
+    end
+
+    subgraph APILayer ["🔌 API Layer (FastAPI Routes)"]
+        api_main["main.py"]
+        api_auth["auth.py"]
+        api_inventory["inventory.py"]
+        api_organizations["organizations.py"]
+        api_users["users.py"]
+    end
+
+    subgraph ServiceLayer ["⚙️ Service Layer (Business Logic)"]
+        svc_org_service["org_service.py"]
+        svc_payment_service["payment_service.py"]
+        svc_user_service["user_service.py"]
+        svc_vehicle_service["vehicle_service.py"]
+    end
+
+    subgraph DataLayer ["💾 Data Layer (Pydantic Models)"]
+        mdl_auth["auth.py"]
+        mdl_invoice["invoice.py"]
+        mdl_notification["notification.py"]
+        mdl_organization["organization.py"]
+        mdl_stock["stock.py"]
+        mdl_user["user.py"]
+    end
+
+    subgraph UtilsLayer ["🔧 Utilities"]
+        utl_formatting["formatting.py"]
+        utl_validation["validation.py"]
+    end
+
+    UI --> api_main
+    api_main --> api_auth
+    api_main --> api_inventory
+    api_main --> api_organizations
+    api_main --> api_users
+    api_inventory --> mdl_inventoryitem
+    api_inventory --> mdl_warehouselocation
+    api_organizations --> mdl_organization
+    api_organizations --> mdl_accounttype
+    api_organizations --> core_organization
+    api_organizations --> core_accounttype
+    api_organizations --> svc_org_service
+    api_users --> mdl_user
+    api_users --> mdl_usercreate
+    api_users --> svc_user_service
+    mdl_invoice --> core_organization
+    svc_org_service --> mdl_organization
+    svc_org_service --> mdl_accounttype
+    svc_org_service --> core_organization
+    svc_org_service --> core_accounttype
+    svc_user_service --> mdl_user
+
+    style ClientLayer fill:#e3f2fd,stroke:#1565c0
+    style APILayer fill:#e8f5e9,stroke:#2e7d32
+    style ServiceLayer fill:#fff3e0,stroke:#ef6c00
+    style DataLayer fill:#fce4ec,stroke:#c62828
+    style UtilsLayer fill:#f3e5f5,stroke:#7b1fa2
+    style CoreLayer fill:#e0f7fa,stroke:#00838f
+```
+
+## Module Summary
+
+| Layer | Count | Modules |
+|-------|-------|---------|
+| API Routes | 4 | `auth`, `inventory`, `organizations`, `users` |
+| Services | 4 | `org_service`, `payment_service`, `user_service`, `vehicle_service` |
+| Models | 6 | `auth`, `invoice`, `notification`, `organization`, `stock`, `user` |
+| Utilities | 2 | `formatting`, `validation` |
+| Core | 0 | *none* |
+
+## How It Works
+
+The diagram above is generated automatically by the `generate_diagrams.py` script:
+
+1. **Module Discovery**: Walks the `backend/app/` directory tree and categorizes files by layer
+2. **Import Analysis**: Parses each `.py` file's AST to find `from ... import ...` statements
+3. **Connection Mapping**: Maps imports to source→target connections between layers
+4. **Mermaid Generation**: Converts the graph into a Mermaid.js flowchart
+
+No manual editing required. Just run:
+
+```bash
+python scripts/generate_diagrams.py
+```

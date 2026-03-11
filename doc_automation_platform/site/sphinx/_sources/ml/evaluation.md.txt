@@ -1,0 +1,164 @@
+# Evaluation Metrics
+
+> Structure and documentation of the evaluation metrics used to assess
+> weather prediction model performance in neural-lam.
+
+## Metrics Overview
+
+```{mermaid}
+graph TD
+    PRED["Model Predictions\n(forecast)"] --> COMP["Comparison Engine"]
+    GT["Ground Truth\n(analysis/reanalysis)"] --> COMP
+
+    COMP --> RMSE["RMSE\n(Root Mean Square Error)"]
+    COMP --> MAE["MAE\n(Mean Absolute Error)"]
+    COMP --> ACC["ACC\n(Anomaly Correlation\nCoefficient)"]
+    COMP --> SPREAD["Spread-Skill\n(ensemble only)"]
+
+    RMSE --> AGG["Aggregation"]
+    MAE --> AGG
+    ACC --> AGG
+    SPREAD --> AGG
+
+    AGG --> PER_VAR["Per-Variable\nScores"]
+    AGG --> PER_LEVEL["Per-Pressure-Level\nScores"]
+    AGG --> PER_LEAD["Per-Lead-Time\nScores"]
+    AGG --> SPATIAL["Spatial Maps\n(grid-point scores)"]
+
+    style PRED fill:#e3f2fd
+    style GT fill:#e8f5e9
+    style COMP fill:#fff3e0
+    style AGG fill:#fce4ec
+```
+
+## Metric Definitions
+
+### Root Mean Square Error (RMSE)
+
+$$
+\text{RMSE}(v, t) = \sqrt{\frac{1}{N} \sum_{i=1}^{N} w_i \left( \hat{y}_{i,v,t} - y_{i,v,t} \right)^2}
+$$
+
+where:
+- $v$ = variable index, $t$ = lead time
+- $N$ = number of grid points
+- $w_i$ = area weight for grid point $i$ (accounts for latitude)
+- $\hat{y}$ = prediction, $y$ = ground truth
+
+| Aspect | Detail |
+|--------|--------|
+| **Range** | $[0, \infty)$ — lower is better |
+| **Units** | Same as the variable (K, m/s, Pa, etc.) |
+| **Weighting** | Area-weighted (cosine of latitude) |
+
+### Mean Absolute Error (MAE)
+
+$$
+\text{MAE}(v, t) = \frac{1}{N} \sum_{i=1}^{N} w_i \left| \hat{y}_{i,v,t} - y_{i,v,t} \right|
+$$
+
+| Aspect | Detail |
+|--------|--------|
+| **Range** | $[0, \infty)$ — lower is better |
+| **Units** | Same as the variable |
+| **Robustness** | More robust to outliers than RMSE |
+
+### Anomaly Correlation Coefficient (ACC)
+
+$$
+\text{ACC}(v, t) = \frac{\sum_i w_i \, \hat{a}_{i,v,t} \, a_{i,v,t}}{\sqrt{\sum_i w_i \, \hat{a}_{i,v,t}^2} \sqrt{\sum_i w_i \, a_{i,v,t}^2}}
+$$
+
+where anomalies are computed relative to climatology:
+$a = y - \bar{y}_\text{clim}$, $\hat{a} = \hat{y} - \bar{y}_\text{clim}$
+
+| Aspect | Detail |
+|--------|--------|
+| **Range** | $[-1, 1]$ — higher is better |
+| **Threshold** | ACC > 0.6 is considered "useful" forecast skill |
+| **Reference** | Climatological mean |
+
+## Evaluation Schema
+
+```{mermaid}
+classDiagram
+    class EvaluationResult {
+        +str model_name
+        +str dataset_name
+        +datetime timestamp
+        +dict~str,MetricResult~ metrics
+        +int num_samples
+        +list~int~ lead_times
+    }
+
+    class MetricResult {
+        +str metric_name
+        +dict~str,float~ per_variable
+        +dict~int,float~ per_lead_time
+        +dict~str,dict~ per_level
+        +float global_mean
+    }
+
+    class VariableScore {
+        +str variable_name
+        +str units
+        +float score
+        +float std_error
+    }
+
+    EvaluationResult --> MetricResult : contains
+    MetricResult --> VariableScore : per variable
+```
+
+## Typical Evaluation Output
+
+```json
+{
+  "model_name": "hi_lam_64",
+  "dataset_name": "danra_test_2018-2020",
+  "timestamp": "2026-03-11T12:00:00Z",
+  "num_samples": 1096,
+  "lead_times_hours": [6, 12, 24, 48, 72],
+  "metrics": {
+    "rmse": {
+      "2m_temperature": {
+        "6h": 0.82, "12h": 1.15, "24h": 1.54, "48h": 2.01, "72h": 2.38
+      },
+      "10m_wind_speed": {
+        "6h": 1.05, "12h": 1.32, "24h": 1.67, "48h": 2.11, "72h": 2.45
+      }
+    },
+    "acc": {
+      "500hPa_geopotential": {
+        "6h": 0.99, "12h": 0.98, "24h": 0.96, "48h": 0.91, "72h": 0.85
+      }
+    }
+  }
+}
+```
+
+## Score Degradation by Lead Time
+
+```{mermaid}
+graph LR
+    T6["6h\n⭐⭐⭐⭐⭐"] --> T12["12h\n⭐⭐⭐⭐"]
+    T12 --> T24["24h\n⭐⭐⭐"]
+    T24 --> T48["48h\n⭐⭐"]
+    T48 --> T72["72h\n⭐"]
+
+    style T6 fill:#c8e6c9,stroke:#2e7d32
+    style T12 fill:#dcedc8,stroke:#558b2f
+    style T24 fill:#fff9c4,stroke:#f9a825
+    style T48 fill:#ffe0b2,stroke:#ef6c00
+    style T72 fill:#ffccbc,stroke:#bf360c
+```
+
+Forecast skill degrades with lead time. The standard operational threshold is
+ACC > 0.6 for "useful" skill. For neural-lam models, this is typically reached
+around 5–7 days for 500 hPa geopotential.
+
+## See Also
+
+- [Model Architecture](model_architecture.md) — GNN structure
+- [Hyperparameters](hyperparameters.md) — Training configuration
+- [Training Pipeline](training_pipeline.md) — Data preparation

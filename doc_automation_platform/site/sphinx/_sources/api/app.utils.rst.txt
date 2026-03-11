@@ -1,0 +1,29 @@
+app.utils package
+=================
+
+Submodules
+----------
+
+app.utils.formatting module
+---------------------------
+
+.. automodule:: app.utils.formatting
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+app.utils.validation module
+---------------------------
+
+.. automodule:: app.utils.validation
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: app.utils
+   :members:
+   :show-inheritance:
+   :undoc-members:

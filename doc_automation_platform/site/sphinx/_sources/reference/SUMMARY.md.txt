@@ -1,0 +1,11 @@
+* app
+    * api
+        * [auth](app/api/auth.md)
+        * [payments](app/api/payments.md)
+        * [users](app/api/users.md)
+    * [main](app/main.md)
+    * models
+        * [user](app/models/user.md)
+    * services
+        * [payment_service](app/services/payment_service.md)
+        * [user_service](app/services/user_service.md)

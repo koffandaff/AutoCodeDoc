@@ -1,0 +1,761 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Training Data Pipeline &mdash; AutoCodeDoc Platform</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6985fe1f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hyperparameter Schemas" href="hyperparameters.html" />
+    <link rel="prev" title="Model Architecture" href="model_architecture.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AutoCodeDoc Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">📘 Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/contributing.html">Contributing Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">📚 API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">🏗️ Architecture</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/system_diagram.html">System Architecture Diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/er_diagram.html">Entity-Relationship Diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/cross_repo_flow.html">Cross-Repository Data Flow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">🤖 ML / LLM Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="model_architecture.html">Model Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Training Data Pipeline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pipeline-overview">Pipeline Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-format-specifications">Data Format Specifications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input-tensor-shape">Input Tensor Shape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typical-variable-sets">Typical Variable Sets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#normalization-strategy">Normalization Strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-augmentation">Data Augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-example">Configuration Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hyperparameters.html">Hyperparameter Schemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Metrics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">🔗 External</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://koffandaff.github.io/AutoCodeDoc/legacy-docs/">MkDocs Site</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AutoCodeDoc Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          
+<div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Training Data Pipeline</li>
+<li style="float: right;">
+    <a href="/AutoCodeDoc/legacy-docs/" class="mkdocs-link" title="Switch to MkDocs Documentation">
+        📘 MkDocs Site
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/koffandaff/AutoCodeDoc/blob/main/doc_automation_platform/docs/sphinx/ml/training_pipeline.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="training-data-pipeline">
+<h1>Training Data Pipeline<a class="headerlink" href="#training-data-pipeline" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>Visualization and documentation of the data flow from raw weather observations
+to model-ready tensors.</p>
+</div></blockquote>
+<section id="pipeline-overview">
+<h2>Pipeline Overview<a class="headerlink" href="#pipeline-overview" title="Link to this heading"></a></h2>
+<pre  class="mermaid">
+        graph TD
+    subgraph RawData [&quot;📦 Raw Data Sources&quot;]
+        ERA5[&quot;ERA5 Reanalysis\n(ECMWF, global)&quot;]
+        DANRA[&quot;DANRA\n(DMI, regional)&quot;]
+        OBS[&quot;Observations\n(weather stations)&quot;]
+    end
+
+    subgraph Preprocessing [&quot;🔄 mllam-data-prep&quot;]
+        CONFIG[&quot;config.yaml\n(variable selection,\ncoordinate mapping)&quot;]
+        XARRAY[&quot;xarray Pipeline\n(select, regrid,\nnormalize)&quot;]
+        ZARR[&quot;.zarr Store\n(chunked, compressed)&quot;]
+        CONFIG --&gt; XARRAY
+        ERA5 --&gt; XARRAY
+        DANRA --&gt; XARRAY
+        OBS --&gt; XARRAY
+        XARRAY --&gt; ZARR
+    end
+
+    subgraph Loading [&quot;📥 neural-lam DataStore&quot;]
+        MDP[&quot;MDPDatastore\n(reads .zarr)&quot;]
+        SPLIT[&quot;Train/Val/Test Split\n(temporal)&quot;]
+        WINDOW[&quot;Windowing\n(input: t-1,t → target: t+1)&quot;]
+        NORM[&quot;Normalization\n(per-variable stats)&quot;]
+        MDP --&gt; SPLIT --&gt; WINDOW --&gt; NORM
+    end
+
+    subgraph Batching [&quot;🔢 PyTorch DataLoader&quot;]
+        DS[&quot;WeatherDataset\n(torch Dataset)&quot;]
+        DL[&quot;DataLoader\n(batch, shuffle, workers)&quot;]
+        TENSOR[&quot;Batched Tensors\n(B, T, N, F)&quot;]
+        NORM --&gt; DS --&gt; DL --&gt; TENSOR
+    end
+
+    ZARR --&gt; MDP
+
+    style RawData fill:#e3f2fd,stroke:#1565c0
+    style Preprocessing fill:#e8f5e9,stroke:#2e7d32
+    style Loading fill:#fff3e0,stroke:#ef6c00
+    style Batching fill:#fce4ec,stroke:#c62828
+    </pre></section>
+<section id="data-format-specifications">
+<h2>Data Format Specifications<a class="headerlink" href="#data-format-specifications" title="Link to this heading"></a></h2>
+<section id="input-tensor-shape">
+<h3>Input Tensor Shape<a class="headerlink" href="#input-tensor-shape" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dimension</p></th>
+<th class="head"><p>Symbol</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Batch</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">B</span></code></p></td>
+<td><p>Number of samples per training step</p></td>
+</tr>
+<tr class="row-odd"><td><p>Time</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
+<td><p>Number of input timesteps (typically 2)</p></td>
+</tr>
+<tr class="row-even"><td><p>Nodes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">N</span></code></p></td>
+<td><p>Number of grid points / spatial locations</p></td>
+</tr>
+<tr class="row-odd"><td><p>Features</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">F</span></code></p></td>
+<td><p>Number of weather variables</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="typical-variable-sets">
+<h3>Typical Variable Sets<a class="headerlink" href="#typical-variable-sets" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Category</p></th>
+<th class="head"><p>Variables</p></th>
+<th class="head"><p>Units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Surface</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2m_temperature</span></code>, <code class="docutils literal notranslate"><span class="pre">10m_u_wind</span></code>, <code class="docutils literal notranslate"><span class="pre">10m_v_wind</span></code>, <code class="docutils literal notranslate"><span class="pre">msl_pressure</span></code></p></td>
+<td><p>K, m/s, Pa</p></td>
+</tr>
+<tr class="row-odd"><td><p>Upper-Air</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temperature</span></code>, <code class="docutils literal notranslate"><span class="pre">geopotential</span></code>, <code class="docutils literal notranslate"><span class="pre">u_wind</span></code>, <code class="docutils literal notranslate"><span class="pre">v_wind</span></code></p></td>
+<td><p>K, m²/s², m/s</p></td>
+</tr>
+<tr class="row-even"><td><p>Derived</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">wind_speed</span></code>, <code class="docutils literal notranslate"><span class="pre">relative_humidity</span></code></p></td>
+<td><p>m/s, %</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="normalization-strategy">
+<h2>Normalization Strategy<a class="headerlink" href="#normalization-strategy" title="Link to this heading"></a></h2>
+<pre  class="mermaid">
+        graph LR
+    RAW[&quot;Raw Values\n(physical units)&quot;] --&gt;|&quot;subtract mean&quot;| CENTERED[&quot;Centered\n(zero-mean)&quot;]
+    CENTERED --&gt;|&quot;divide by std&quot;| NORMALIZED[&quot;Normalized\n(unit variance)&quot;]
+
+    STATS[&quot;Pre-computed\nStats File\n(.zarr attrs)&quot;] --&gt; CENTERED
+    STATS --&gt; NORMALIZED
+
+    style RAW fill:#ffccbc
+    style NORMALIZED fill:#c8e6c9
+    style STATS fill:#e3f2fd
+    </pre><p>Statistics (mean and standard deviation) are computed over the <strong>training set only</strong>
+and stored as attributes in the <code class="docutils literal notranslate"><span class="pre">.zarr</span></code> store. The same statistics are applied
+during validation and testing to prevent data leakage.</p>
+</section>
+<section id="data-augmentation">
+<h2>Data Augmentation<a class="headerlink" href="#data-augmentation" title="Link to this heading"></a></h2>
+<p>Currently, the neural-lam pipeline uses <strong>no spatial augmentation</strong> (weather data
+has fixed coordinate grids). Temporal augmentation is achieved through:</p>
+<ul class="simple">
+<li><p><strong>Random windowing</strong>: Different start times within training period</p></li>
+<li><p><strong>Multi-step rollout</strong>: Variable forecast horizon during training</p></li>
+</ul>
+</section>
+<section id="configuration-example">
+<h2>Configuration Example<a class="headerlink" href="#configuration-example" title="Link to this heading"></a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># mllam-data-prep config.yaml</span>
+<span class="nt">dataset</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danra_example</span>
+<span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data/danra/</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">surface</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2m_temperature</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10m_u_component_of_wind</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10m_v_component_of_wind</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mean_sea_level_pressure</span>
+<span class="w">    </span><span class="nt">atmosphere</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">levels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">500</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">700</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">850</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1000</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temperature</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geopotential</span>
+<span class="w">  </span><span class="nt">grid</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">regular_ll</span>
+<span class="w">    </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25</span>
+<span class="w">  </span><span class="nt">splits</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">train</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;1990-01-01&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;2015-12-31&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">val</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;2016-01-01&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;2017-12-31&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;2018-01-01&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;2020-12-31&quot;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="model_architecture.html"><span class="std std-doc">Model Architecture</span></a> — How the GNN consumes this data</p></li>
+<li><p><a class="reference internal" href="hyperparameters.html"><span class="std std-doc">Hyperparameters</span></a> — Training configuration</p></li>
+<li><p><a class="reference internal" href="../architecture/cross_repo_flow.html"><span class="std std-doc">Cross-Repo Flow</span></a> — Full pipeline across repos</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="model_architecture.html" class="btn btn-neutral float-left" title="Model Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hyperparameters.html" class="btn btn-neutral float-right" title="Hyperparameter Schemas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, AutoCodeDoc Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
