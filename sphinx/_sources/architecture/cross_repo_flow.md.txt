@@ -2,7 +2,7 @@
 
 > **Auto-generated** pipeline visualization showing how the three neural-lam
 > ecosystem repositories interact.
-> Last updated: 2026-03-11 19:20:58
+> Last updated: 2026-03-11 19:21:20
 
 ## The Three-Repo Pipeline
 
