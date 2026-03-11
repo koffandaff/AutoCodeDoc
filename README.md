@@ -111,7 +111,10 @@ The pipeline acts as a strict guardrail against broken documentation.
 2. **Detection**: The `pytest` suite running `test_docs_build.py` runs `sphinx-build -W` (treat warnings as errors).
 3. **Result**: The build halts. The broken documentation is **not** deployed to `gh-pages`, protecting the live site from showing 404s or broken imports.
 
-![Failed CI Build Screenshot](docs/assets/placeholder_ci_failure.png)
+![WhatsApp Image 2026-03-12 at 12 50 13 AM](https://github.com/user-attachments/assets/f1eb63ee-c469-46de-af0c-5101a763515a)
+
+<img width="1180" height="76" alt="image" src="https://github.com/user-attachments/assets/3d97f7d1-75ee-45de-abbf-9f23e699ffdc" />
+
 *Placeholder: Screenshot of a failing GitHub Actions run catching a documentation error*
 
 ---
