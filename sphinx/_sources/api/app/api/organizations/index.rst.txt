@@ -37,7 +37,7 @@ Module Contents
        emails (List[str]): List of administrative contact email addresses.
 
    Returns:
-       Organization: The newly created organization record.
+       Organization: The newly created organization record
 
 
 .. py:data:: router
