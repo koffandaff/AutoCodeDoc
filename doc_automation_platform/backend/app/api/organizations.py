@@ -18,6 +18,6 @@ async def register_organization(name: str, account_type: AccountType, emails: Li
         emails (List[str]): List of administrative contact email addresses.
 
     Returns:
-        Organization: The newly created organization record.
+        Organization: The newly created organization record
     """
     return await org_service.create_organization(name, account_type, emails)
