@@ -1,7 +1,7 @@
 # System Architecture Diagram
 
 > **Auto-generated** from Python import graph analysis (AST-based).
-> Last updated: 2026-03-11 16:25:18
+> Last updated: 2026-03-11 17:21:57
 
 ## Overview
 

@@ -2,7 +2,7 @@
 
 Comprehensive list of all endpoints and their documentation, auto-detected from FastAPI routers.
 
-**Total API Modules Detected**: 8
+**Total API Modules Detected**: 4
 
 ---
 
@@ -18,18 +18,6 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 
 ---
 
-## Billing
-
-**Module**: `app.api.billing`
-
-| Endpoint | Description |
-|----------|-------------|
-| `⚡ create_invoice(org_id)` | Create a new invoice. |
-
-::: app.api.billing
-
----
-
 ## Inventory
 
 **Module**: `app.api.inventory`
@@ -39,18 +27,6 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 | `⚡ map_inventory_location(sku, aisle, shelf, bin_num)` | Map an inventory item to a specific physical warehouse location. |
 
 ::: app.api.inventory
-
----
-
-## Notifications
-
-**Module**: `app.api.notifications`
-
-| Endpoint | Description |
-|----------|-------------|
-| `⚡ trigger_notification(payload)` | Trigger a new system notification. |
-
-::: app.api.notifications
 
 ---
 
@@ -66,18 +42,6 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 
 ---
 
-## Payments
-
-**Module**: `app.api.payments`
-
-| Endpoint | Description |
-|----------|-------------|
-| `⚡ process_payment(amount, currency)` | Process a new payment transaction. |
-
-::: app.api.payments
-
----
-
 ## Users
 
 **Module**: `app.api.users`
@@ -89,18 +53,6 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 | `⚡ delete_user(user_id)` | Deactivate a user account. |
 
 ::: app.api.users
-
----
-
-## Vehicles
-
-**Module**: `app.api.vehicles`
-
-| Endpoint | Description |
-|----------|-------------|
-| `⚡ create_vehicle(vehicle)` | Register a new vehicle into the platform. |
-
-::: app.api.vehicles
 
 ---
 
