@@ -45,31 +45,38 @@ A production-grade, fully automated documentation engine that turns your Python 
 Below is a visual tour of the generated documentation.
 
 ### Home
-![Homepage Screenshot](docs/assets/placeholder_home.png)
+<img width="1577" height="976" alt="image" src="https://github.com/user-attachments/assets/c435b520-39f1-4390-9391-a2bee4d194dd" />
+
 *Placeholder: Screenshot of the Sphinx Homepage*
 
 ### API Reference
-![API Reference Screenshot](docs/assets/placeholder_api_reference.png)
+<img width="1531" height="965" alt="image" src="https://github.com/user-attachments/assets/67811fe0-06f2-496f-a5c4-68f9416948e0" />
+
 *Placeholder: Screenshot of the Auto-Generated API Reference showing classes and methods*
 
 ### System Architecture
-![System Architecture Screenshot](docs/assets/placeholder_system_architecture.png)
+<img width="1533" height="943" alt="image" src="https://github.com/user-attachments/assets/6b5677f4-9436-4e43-b9f3-9cdf26b24cc4" />
+
 *Placeholder: Screenshot of the AST-generated system architecture diagram*
 
 ### ER Diagram
-![ER Diagram Screenshot](docs/assets/placeholder_er_diagram.png)
+<img width="1546" height="967" alt="image" src="https://github.com/user-attachments/assets/89a5777a-e3a6-4b94-b75b-c5aa667f8303" />
+
 *Placeholder: Screenshot of the Pydantic-generated Entity-Relationship diagram*
 
 ### Cross-Repo Flow
-![Cross-Repo Flow Screenshot](docs/assets/placeholder_cross_repo.png)
+<img width="1547" height="967" alt="image" src="https://github.com/user-attachments/assets/f84c4dfa-4297-4003-a49c-7a3689abf952" />
+
 *Placeholder: Screenshot of the mllam-data-prep to neural-lam data pipeline*
 
 ### ML Documentation
-![ML Documentation Screenshot](docs/assets/placeholder_ml_docs.png)
+<img width="1616" height="969" alt="image" src="https://github.com/user-attachments/assets/4630e3f9-28cc-430a-9df7-16f0aaa1f163" />
+
 *Placeholder: Screenshot of the ML hyperparameter and model documentation*
 
 ### Contributing Guide
-![Contributing Guide Screenshot](docs/assets/placeholder_contributing.png)
+<img width="1557" height="975" alt="image" src="https://github.com/user-attachments/assets/aab41b4d-530a-42bd-ac1d-53545a66412b" />
+
 *Placeholder: Screenshot of the NumPy docstring standards guide*
 
 ---
