@@ -49,38 +49,38 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">📘 Guides</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../guides/installation.html">Installation Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../guides/usage.html">Usage Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../guides/contributing.html">Contributing Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">📚 API Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">app</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../../index.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="../index.html">app.api</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../main/index.html">app.main</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../ml/index.html">app.ml</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../models/index.html">app.models</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../services/index.html">app.services</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../utils/index.html">app.utils</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">app</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">app.api</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../main/index.html">app.main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ml/index.html">app.ml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../models/index.html">app.models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../services/index.html">app.services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../utils/index.html">app.utils</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">🏗️ Architecture</span></p>
+<p class="caption" role="heading"><span class="caption-text">Architecture</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../architecture/system_diagram.html">System Architecture Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../architecture/er_diagram.html">Entity-Relationship Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../architecture/cross_repo_flow.html">Cross-Repository Data Flow</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">🔗 External</span></p>
+<p class="caption" role="heading"><span class="caption-text">External</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://koffandaff.github.io/AutoCodeDoc/legacy-docs/">MkDocs Site</a></li>
 </ul>
@@ -101,7 +101,6 @@
   <ul class="wy-breadcrumbs">
 
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../../index.html">API Reference</a></li>
           <li class="breadcrumb-item"><a href="../../index.html">app</a></li>
           <li class="breadcrumb-item"><a href="../index.html">app.api</a></li>
       <li class="breadcrumb-item active">app.api.inventory</li>
@@ -112,7 +111,7 @@
 </li>
 
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/koffandaff/AutoCodeDoc/blob/main/doc_automation_platform/docs/sphinx/api/app/api/inventory/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/koffandaff/AutoCodeDoc/blob/main/doc_automation_platform/docs/api/app/api/inventory/index.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -122,6 +121,8 @@
              
   <section id="module-app.api.inventory">
 <span id="app-api-inventory"></span><h1>app.api.inventory<a class="headerlink" href="#module-app.api.inventory" title="Link to this heading"></a></h1>
+<p>Provides endpoints for managing physical inventory and system status across
+multiple warehouse facilities.</p>
 <section id="attributes">
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
 <table class="autosummary longtable docutils align-default">
@@ -136,7 +137,10 @@
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#app.api.inventory.map_inventory_location" title="app.api.inventory.map_inventory_location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map_inventory_location</span></code></a>(sku, aisle, shelf, bin_num)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#app.api.inventory.get_inventory_status" title="app.api.inventory.get_inventory_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_inventory_status</span></code></a>()</p></td>
+<td><p>Retrieve the current operational status of the inventory system.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#app.api.inventory.map_inventory_location" title="app.api.inventory.map_inventory_location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map_inventory_location</span></code></a>(sku, aisle, shelf, bin_num)</p></td>
 <td><p>Map an inventory item to a specific physical warehouse location.</p></td>
 </tr>
 </tbody>
@@ -144,6 +148,28 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="app.api.inventory.get_inventory_status">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.api.inventory.</span></span><span class="sig-name descname"><span class="pre">get_inventory_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/app/api/inventory.html#get_inventory_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.api.inventory.get_inventory_status" title="Link to this definition"></a></dt>
+<dd><p>Retrieve the current operational status of the inventory system.</p>
+<p>This endpoint performs a heartbeat check on the warehouse management
+subsystem and returns a summary of active nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing:
+- status (str): System health (“operational”, “degraded”, “offline”).
+- active_warehouses (int): Count of connected warehouse facilities.
+- last_sync (str): ISO timestamp of the last database sync.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="app.api.inventory.map_inventory_location">
 <span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">app.api.inventory.</span></span><span class="sig-name descname"><span class="pre">map_inventory_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sku</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">aisle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">shelf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/app/api/inventory.html#map_inventory_location"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.api.inventory.map_inventory_location" title="Link to this definition"></a></dt>

@@ -2,33 +2,11 @@
 
 How the platform's core features connect through the service layer. Each service encapsulates business logic for a specific domain.
 
-**Total Services Detected**: 6
+**Total Services Detected**: 4
+
 
 ---
 
-## Billing Service
-
-**Module**: `app.services.billing_service`
-
-| Function | Description |
-|----------|-------------|
-| `🔄 generate_invoice(org, items)` | Generates a billing invoice for an organization. |
-
-::: app.services.billing_service
-
----
-
-## Notification Service
-
-**Module**: `app.services.notification_service`
-
-| Function | Description |
-|----------|-------------|
-| `🔄 send_notification(user_id, notif_type, message)` | Dispatch a notification to a specific user. |
-
-::: app.services.notification_service
-
----
 
 ## Org Service
 
@@ -40,7 +18,9 @@ How the platform's core features connect through the service layer. Each service
 
 ::: app.services.org_service
 
+
 ---
+
 
 ## Payment Service
 
@@ -52,7 +32,9 @@ How the platform's core features connect through the service layer. Each service
 
 ::: app.services.payment_service
 
+
 ---
+
 
 ## User Service
 
@@ -66,7 +48,9 @@ How the platform's core features connect through the service layer. Each service
 
 ::: app.services.user_service
 
+
 ---
+
 
 ## Vehicle Service
 
@@ -78,5 +62,5 @@ How the platform's core features connect through the service layer. Each service
 
 ::: app.services.vehicle_service
 
----
 
+---

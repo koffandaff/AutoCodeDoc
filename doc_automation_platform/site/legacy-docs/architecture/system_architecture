@@ -1,0 +1,24 @@
+digraph "Backend Architecture" {
+	graph [fontcolor="#2D3436" fontname="Sans-Serif" fontsize=15 label="Backend Architecture" nodesep=0.60 pad=2.0 rankdir=LR ranksep=0.75 splines=ortho]
+	node [fixedsize=true fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 height=1.4 imagescale=true labelloc=b shape=box style=rounded width=1.4]
+	edge [color="#7B8894"]
+	c24fb77c26d548d5b6ff69155c09e50b -> "76ec44ce3b244de5846013c5e7f90b1e" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	e2443af12d8f4120b84ba4a0792620e0 -> "76ec44ce3b244de5846013c5e7f90b1e" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"76ec44ce3b244de5846013c5e7f90b1e" -> edc06b1c93704976b1bfbace307773e7 [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	subgraph "cluster_FastAPI Application" {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label="FastAPI Application" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		subgraph "cluster_API Routes" {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=12 label="API Routes" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+			c24fb77c26d548d5b6ff69155c09e50b [label="auth Router" height=1.9 image="E:\AutoCodeDoc\doc_automation_platform\venv\Lib\site-packages\resources/programming/language\python.png" shape=none]
+			e2443af12d8f4120b84ba4a0792620e0 [label="users Router" height=1.9 image="E:\AutoCodeDoc\doc_automation_platform\venv\Lib\site-packages\resources/programming/language\python.png" shape=none]
+		}
+		subgraph "cluster_Service Layer" {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=12 label="Service Layer" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+			"76ec44ce3b244de5846013c5e7f90b1e" [label="user_service Service" height=1.9 image="E:\AutoCodeDoc\doc_automation_platform\venv\Lib\site-packages\resources/programming/language\python.png" shape=none]
+		}
+		subgraph "cluster_Data Models" {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=12 label="Data Models" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+			edc06b1c93704976b1bfbace307773e7 [label="user Model" height=1.9 image="E:\AutoCodeDoc\doc_automation_platform\venv\Lib\site-packages\resources/programming/language\python.png" shape=none]
+		}
+	}
+}

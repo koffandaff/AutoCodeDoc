@@ -47,31 +47,24 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">📘 Guides</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../guides/installation.html">Installation Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/usage.html">Usage Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/contributing.html">Contributing Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">📚 API Reference</span></p>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/app/index.html">app</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">🏗️ Architecture</span></p>
+<p class="caption" role="heading"><span class="caption-text">Architecture</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../architecture/system_diagram.html">System Architecture Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../architecture/er_diagram.html">Entity-Relationship Diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../architecture/cross_repo_flow.html">Cross-Repository Data Flow</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">🤖 ML / LLM Documentation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../ml/model_architecture.html">Model Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ml/training_pipeline.html">Training Data Pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ml/hyperparameters.html">Hyperparameter Schemas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation Metrics</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">🔗 External</span></p>
+<p class="caption" role="heading"><span class="caption-text">External</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://koffandaff.github.io/AutoCodeDoc/legacy-docs/">MkDocs Site</a></li>
 </ul>
@@ -100,7 +93,7 @@
 </li>
 
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/koffandaff/AutoCodeDoc/blob/main/doc_automation_platform/docs/sphinx/design/routes.md" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/koffandaff/AutoCodeDoc/blob/main/doc_automation_platform/docs/design/routes.md" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -111,7 +104,7 @@
   <section id="api-routes-listing">
 <h1>API Routes Listing<a class="headerlink" href="#api-routes-listing" title="Link to this heading"></a></h1>
 <p>Comprehensive list of all endpoints and their documentation, auto-detected from FastAPI routers.</p>
-<p><strong>Total API Modules Detected</strong>: 8</p>
+<p><strong>Total API Modules Detected</strong>: 5</p>
 <hr class="docutils" />
 <section id="auth">
 <h2>Auth<a class="headerlink" href="#auth" title="Link to this heading"></a></h2>
@@ -130,22 +123,6 @@
 </table>
 <div class="app.api.auth docutils">
 <hr class="docutils" />
-<p class="rubric" id="billing">Billing</p>
-<p><strong>Module</strong>: <code class="docutils literal notranslate"><span class="pre">app.api.billing</span></code></p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Endpoint</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">⚡</span> <span class="pre">create_invoice(org_id)</span></code></p></td>
-<td><p>Create a new invoice.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="app.api.billing docutils">
-<hr class="docutils" />
 <p class="rubric" id="inventory">Inventory</p>
 <p><strong>Module</strong>: <code class="docutils literal notranslate"><span class="pre">app.api.inventory</span></code></p>
 <table class="docutils align-default">
@@ -162,22 +139,6 @@
 </table>
 <div class="app.api.inventory docutils">
 <hr class="docutils" />
-<p class="rubric" id="notifications">Notifications</p>
-<p><strong>Module</strong>: <code class="docutils literal notranslate"><span class="pre">app.api.notifications</span></code></p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Endpoint</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">⚡</span> <span class="pre">trigger_notification(payload)</span></code></p></td>
-<td><p>Trigger a new system notification.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="app.api.notifications docutils">
-<hr class="docutils" />
 <p class="rubric" id="organizations">Organizations</p>
 <p><strong>Module</strong>: <code class="docutils literal notranslate"><span class="pre">app.api.organizations</span></code></p>
 <table class="docutils align-default">
@@ -193,22 +154,6 @@
 </tbody>
 </table>
 <div class="app.api.organizations docutils">
-<hr class="docutils" />
-<p class="rubric" id="payments">Payments</p>
-<p><strong>Module</strong>: <code class="docutils literal notranslate"><span class="pre">app.api.payments</span></code></p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Endpoint</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">⚡</span> <span class="pre">process_payment(amount,</span> <span class="pre">currency)</span></code></p></td>
-<td><p>Process a new payment transaction.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="app.api.payments docutils">
 <hr class="docutils" />
 <p class="rubric" id="users">Users</p>
 <p><strong>Module</strong>: <code class="docutils literal notranslate"><span class="pre">app.api.users</span></code></p>
@@ -247,10 +192,6 @@
 </tbody>
 </table>
 <div class="app.api.vehicles docutils">
-<hr class="docutils" />
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>

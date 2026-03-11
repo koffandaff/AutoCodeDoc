@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-11T16:23:47.361669",
+  "timestamp": "2026-03-11T23:48:15.132445",
   "pipeline_version": "1.0.0",
   "builds": {
     "sphinx": {
@@ -7,7 +7,7 @@
       "output_dir": "E:\\AutoCodeDoc\\doc_automation_platform\\site\\sphinx"
     },
     "mkdocs": {
-      "success": false,
+      "success": true,
       "output_dir": "E:\\AutoCodeDoc\\doc_automation_platform\\site\\legacy-docs"
     }
   },
@@ -22,7 +22,6 @@
     "error": "generation failed"
   },
   "warnings": [
-    "MkDocs build failed",
     "Docstring coverage is 0.0%"
   ]
 }

@@ -2,9 +2,11 @@
 
 Comprehensive list of all endpoints and their documentation, auto-detected from FastAPI routers.
 
-**Total API Modules Detected**: 8
+**Total API Modules Detected**: 5
+
 
 ---
+
 
 ## Auth
 
@@ -16,19 +18,9 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 
 ::: app.api.auth
 
----
-
-## Billing
-
-**Module**: `app.api.billing`
-
-| Endpoint | Description |
-|----------|-------------|
-| `⚡ create_invoice(org_id)` | Create a new invoice. |
-
-::: app.api.billing
 
 ---
+
 
 ## Inventory
 
@@ -40,19 +32,9 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 
 ::: app.api.inventory
 
----
-
-## Notifications
-
-**Module**: `app.api.notifications`
-
-| Endpoint | Description |
-|----------|-------------|
-| `⚡ trigger_notification(payload)` | Trigger a new system notification. |
-
-::: app.api.notifications
 
 ---
+
 
 ## Organizations
 
@@ -64,19 +46,9 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 
 ::: app.api.organizations
 
----
-
-## Payments
-
-**Module**: `app.api.payments`
-
-| Endpoint | Description |
-|----------|-------------|
-| `⚡ process_payment(amount, currency)` | Process a new payment transaction. |
-
-::: app.api.payments
 
 ---
+
 
 ## Users
 
@@ -90,7 +62,9 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 
 ::: app.api.users
 
+
 ---
+
 
 ## Vehicles
 
@@ -101,6 +75,3 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 | `⚡ create_vehicle(vehicle)` | Register a new vehicle into the platform. |
 
 ::: app.api.vehicles
-
----
-

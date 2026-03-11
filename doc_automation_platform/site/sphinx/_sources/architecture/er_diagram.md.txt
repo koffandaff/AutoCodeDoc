@@ -1,7 +1,7 @@
 # Entity-Relationship Diagram
 
 > **Auto-generated** from Pydantic model introspection.
-> Last updated: 2026-03-11 16:25:18
+> Last updated: 2026-03-11 17:21:58
 
 ## Overview
 

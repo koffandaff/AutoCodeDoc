@@ -1,0 +1,26 @@
+FastAPI Application Architecture Tree
+=====================================
+
+├── API Routes
+│    ├── auth
+│    ├── inventory
+│    ├── organizations
+│    ├── users
+│
+├── Service Layer
+│    ├── org_service
+│    ├── payment_service
+│    ├── user_service
+│    ├── vehicle_service
+│
+├── Data Models
+     ├── auth
+     ├── invoice
+     ├── notification
+     ├── organization
+     ├── stock
+     ├── user
+│
+├── Utilities
+     ├── formatting
+     ├── validation
