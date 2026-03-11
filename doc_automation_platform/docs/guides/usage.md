@@ -186,4 +186,3 @@ graph TD
 
 - Review the [Architecture Diagrams](../architecture/system_diagram.md)
 - Read the [Contributing Guide](contributing.md) to learn the doc standards
-- Explore the [ML Documentation](../ml/model_architecture.md)

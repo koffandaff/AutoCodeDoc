@@ -4,7 +4,6 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 
 **Total API Modules Detected**: 4
 
----
 
 ## Auth
 
@@ -16,7 +15,6 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 
 ::: app.api.auth
 
----
 
 ## Inventory
 
@@ -28,7 +26,6 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 
 ::: app.api.inventory
 
----
 
 ## Organizations
 
@@ -40,7 +37,6 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 
 ::: app.api.organizations
 
----
 
 ## Users
 

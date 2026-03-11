@@ -4,7 +4,6 @@ How the platform's core features connect through the service layer. Each service
 
 **Total Services Detected**: 4
 
----
 
 ## Org Service
 
@@ -16,7 +15,6 @@ How the platform's core features connect through the service layer. Each service
 
 ::: app.services.org_service
 
----
 
 ## Payment Service
 
@@ -28,7 +26,6 @@ How the platform's core features connect through the service layer. Each service
 
 ::: app.services.payment_service
 
----
 
 ## User Service
 
@@ -42,7 +39,6 @@ How the platform's core features connect through the service layer. Each service
 
 ::: app.services.user_service
 
----
 
 ## Vehicle Service
 

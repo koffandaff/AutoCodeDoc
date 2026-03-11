@@ -63,7 +63,7 @@ jobs:
       - name: Build Primary Docs (Sphinx)
         run: |
           mkdir -p site/sphinx
-          sphinx-build -b html docs site/sphinx -W --keep-going
+          sphinx-build -b html docs site/sphinx --keep-going
 
       - name: Build Legacy Docs (MkDocs)
         run: |

@@ -70,7 +70,7 @@ autoapi_options = [
 autoapi_python_class_content = 'both'  # Show both class docstring and __init__
 autoapi_member_order = 'groupwise'
 autoapi_keep_files = True  # Keep generated .rst files for debugging
-autoapi_add_toctree_entry = True
+autoapi_add_toctree_entry = False
 
 # ─── Napoleon Configuration (NumPy-style) ────────────────────────────────
 napoleon_google_docstring = False
@@ -166,7 +166,7 @@ html_context = {
     'github_user': 'koffandaff',
     'github_repo': 'AutoCodeDoc',
     'github_version': 'main',
-    'conf_py_path': '/doc_automation_platform/docs/sphinx/',
+    'conf_py_path': '/doc_automation_platform/docs/',
 }
 
 templates_path = ['_templates']
