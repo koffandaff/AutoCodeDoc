@@ -590,24 +590,6 @@ window.runMermaid = runMermaid;</script>
 <div class="viewcode-block" id="get_inventory_status">
 <a class="viewcode-back" href="../../../api/app/api/inventory/index.html#app.api.inventory.get_inventory_status">[docs]</a>
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_inventory_status</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Retrieve the current operational status of the inventory system.</span>
-
-<span class="sd">    This endpoint performs a heartbeat check on the warehouse management</span>
-<span class="sd">    subsystem and returns a summary of active nodes.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    dict</span>
-<span class="sd">        A dictionary containing:</span>
-<span class="sd">        - status (str): System health (&quot;operational&quot;, &quot;degraded&quot;, &quot;offline&quot;).</span>
-<span class="sd">        - active_warehouses (int): Count of connected warehouse facilities.</span>
-<span class="sd">        - last_sync (str): ISO timestamp of the last database sync.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;operational&quot;</span><span class="p">,</span>
         <span class="s2">&quot;active_warehouses&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
