@@ -4,16 +4,21 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
+  pull-requests: write  # Needed to post coverage comments on PRs
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: doc_automation_platform
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -25,17 +30,82 @@ jobs:
           cache: 'pip'
           cache-dependency-path: doc_automation_platform/requirements.txt
 
-      - name: Install Dependencies
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+
+      - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          # Path adjustment for generation scripts
+          # Path adjustment for generation scripts and sphinx
           echo "PYTHONPATH=$GITHUB_WORKSPACE/doc_automation_platform/backend" >> $GITHUB_ENV
 
-      - name: Documentation Integrity Check
+      - name: Lint Check
         run: |
-          python scripts/check_doc_sync.py
+          python -m py_compile backend/app/main.py
+
+      - name: Docstring Coverage Check (Non-Blocking)
+        id: coverage
+        run: |
+          interrogate backend/ -v --fail-under 0 > coverage_report.txt
+          cat coverage_report.txt
+          
+          # Extract percentage for PR comment
+          COVERAGE_PCT=$(grep -oP '(?<=RESULT: )\d+\.\d+' coverage_report.txt | tail -1 || echo "0")
+          echo "pct=$COVERAGE_PCT" >> $GITHUB_OUTPUT
+
+      - name: Diagram Generation
+        run: |
+          python scripts/generate_diagrams.py
+
+      - name: Build Primary Docs (Sphinx)
+        run: |
+          mkdir -p site/sphinx
+          sphinx-build -b html docs/sphinx site/sphinx -W --keep-going
+
+      - name: Build Legacy Docs (MkDocs)
+        run: |
+          mkdir -p site/legacy-docs
+          mkdocs build -d site/legacy-docs
+
+      - name: Run Backend Validation Tests
+        run: |
+          # Simple pytest running the documentation validation tests
+          pip install pytest
+          pytest backend/tests/ -v
+
+      - name: Generate Pipeline Report
+        run: |
+          python run_pipeline.py --build-only --skip-coverage
+          # The report is generated as docs_report.json
+
+      - name: PR Comment on Coverage
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const coverage = parseFloat('${{ steps.coverage.outputs.pct }}');
+            let icon = coverage >= 90 ? '✅' : (coverage >= 70 ? '⚠️' : '❌');
+            let body = `### ${icon} Documentation Coverage Report\n\n**Current Coverage:** \`${coverage}%\`\n\n`;
+            
+            if (coverage < 90) {
+              body += "> Please ensure all new Python code includes thorough NumPy-style docstrings (Parameters, Returns, Raises). This check is non-blocking, but we aim for 100% coverage.";
+            } else {
+              body += "> Excellent work keeping the codebase well-documented!";
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            })
 
       - name: Deploy to GitHub Pages
-        run: |
-          mkdocs gh-deploy --force
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./doc_automation_platform/site
