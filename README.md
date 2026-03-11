@@ -93,7 +93,8 @@ When code is pushed with valid syntax and no critical Sphinx errors, the pipelin
 3. **Coverage**: `interrogate` outputs the coverage percentage (this is non-blocking, so a low score still passes the build).
 4. **Deploy**: The `site/sphinx` directory is pushed to the `gh-pages` branch, making the site live instantly.
 
-![Successful CI Build Screenshot](docs/assets/placeholder_ci_success.png)
+<img width="1051" height="377" alt="image" src="https://github.com/user-attachments/assets/05142cf9-d82a-4979-9ddc-534ebe5907eb" />
+
 *Placeholder: Screenshot of a passing GitHub Actions run*
 
 ### Case 2: Failed Build (Syntax/Import Error)
