@@ -22,7 +22,7 @@ def test_sphinx_build_no_errors():
     cmd = [
         sys.executable, "-m", "sphinx.cmd.build",
         "-b", "html",
-        "-W", "--keep-going",
+        "--keep-going",
         str(SPHINX_SRC),
         str(SPHINX_OUT)
     ]

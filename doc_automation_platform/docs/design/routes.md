@@ -2,7 +2,10 @@
 
 Comprehensive list of all endpoints and their documentation, auto-detected from FastAPI routers.
 
-**Total API Modules Detected**: 4
+**Total API Modules Detected**: 5
+
+
+---
 
 
 ## Auth
@@ -16,6 +19,9 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 ::: app.api.auth
 
 
+---
+
+
 ## Inventory
 
 **Module**: `app.api.inventory`
@@ -27,6 +33,9 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 ::: app.api.inventory
 
 
+---
+
+
 ## Organizations
 
 **Module**: `app.api.organizations`
@@ -36,6 +45,9 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 | `⚡ register_organization(name, account_type, emails)` | Register a new Organization. |
 
 ::: app.api.organizations
+
+
+---
 
 
 ## Users
@@ -50,5 +62,16 @@ Comprehensive list of all endpoints and their documentation, auto-detected from 
 
 ::: app.api.users
 
+
 ---
 
+
+## Vehicles
+
+**Module**: `app.api.vehicles`
+
+| Endpoint | Description |
+|----------|-------------|
+| `⚡ create_vehicle(vehicle)` | Register a new vehicle into the platform. |
+
+::: app.api.vehicles

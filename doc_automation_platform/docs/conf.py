@@ -64,13 +64,12 @@ autoapi_options = [
     'undoc-members',
     'show-inheritance',
     'show-module-summary',
-    'imported-members',
     'special-members',
 ]
 autoapi_python_class_content = 'both'  # Show both class docstring and __init__
 autoapi_member_order = 'groupwise'
 autoapi_keep_files = True  # Keep generated .rst files for debugging
-autoapi_add_toctree_entry = False
+autoapi_add_toctree_entry = True
 
 # ─── Napoleon Configuration (NumPy-style) ────────────────────────────────
 napoleon_google_docstring = False

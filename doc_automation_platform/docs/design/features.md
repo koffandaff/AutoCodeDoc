@@ -5,6 +5,9 @@ How the platform's core features connect through the service layer. Each service
 **Total Services Detected**: 4
 
 
+---
+
+
 ## Org Service
 
 **Module**: `app.services.org_service`
@@ -16,6 +19,9 @@ How the platform's core features connect through the service layer. Each service
 ::: app.services.org_service
 
 
+---
+
+
 ## Payment Service
 
 **Module**: `app.services.payment_service`
@@ -25,6 +31,9 @@ How the platform's core features connect through the service layer. Each service
 | `🔄 create_transaction(amount, currency)` | Create a payment transaction record in the simulated gateway. |
 
 ::: app.services.payment_service
+
+
+---
 
 
 ## User Service
@@ -40,6 +49,9 @@ How the platform's core features connect through the service layer. Each service
 ::: app.services.user_service
 
 
+---
+
+
 ## Vehicle Service
 
 **Module**: `app.services.vehicle_service`
@@ -50,5 +62,5 @@ How the platform's core features connect through the service layer. Each service
 
 ::: app.services.vehicle_service
 
----
 
+---

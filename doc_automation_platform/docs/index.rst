@@ -25,7 +25,7 @@ a beautiful, live-updating documentation site — powered entirely by NumPy-styl
       Install dependencies, set up your environment, and start building.
 
    .. grid-item-card:: API Reference
-      :link: api/index
+      :link: api/app/index
       :link-type: doc
 
       Auto-generated from source code — every module, class, and function.
@@ -69,7 +69,7 @@ Key Features
    :maxdepth: 3
    :caption: API Reference
 
-   api/index
+   api/app/index
 
 .. toctree::
    :maxdepth: 2
