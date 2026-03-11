@@ -1,0 +1,873 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database Schema &mdash; AutoCodeDoc Platform</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6985fe1f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AutoCodeDoc Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/contributing.html">Contributing Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/app/index.html">app</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Architecture</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/system_diagram.html">System Architecture Diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/er_diagram.html">Entity-Relationship Diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/cross_repo_flow.html">Cross-Repository Data Flow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://koffandaff.github.io/AutoCodeDoc/legacy-docs/">MkDocs Site</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AutoCodeDoc Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          
+<div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Database Schema</li>
+<li style="float: right;">
+    <a href="/AutoCodeDoc/legacy-docs/" class="mkdocs-link" title="Switch to MkDocs Documentation">
+        📘 MkDocs Site
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/koffandaff/AutoCodeDoc/blob/main/doc_automation_platform/docs/design/schema.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="database-schema">
+<h1>Database Schema<a class="headerlink" href="#database-schema" title="Link to this heading"></a></h1>
+<p>Comprehensive breakdown of all platform data models, auto-generated from Pydantic source code.</p>
+<section id="entity-relationship-diagram">
+<h2>Entity-Relationship Diagram<a class="headerlink" href="#entity-relationship-diagram" title="Link to this heading"></a></h2>
+<p>This true ER diagram is built dynamically by scanning all database models and their fields.</p>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>erDiagram
+    Address {
+        str street
+        str city
+        str zip_code
+    }
+    BaseEntity {
+        str id
+        str created_at
+        Optional metadata
+    }
+    InventoryItem {
+        str sku
+        str name
+        Literal status
+        Optional location
+        Union weight_kg
+    }
+    Invoice {
+        str invoice_id
+        Organization organization
+        List items
+        float total_amount
+        bool is_paid
+    }
+    InvoiceItem {
+        str description
+        int quantity
+        float unit_price
+    }
+    Notification {
+        str id
+        int user_id
+        Literal type
+        str message
+        bool read
+    }
+    NotificationCreate {
+        int user_id
+        Literal type
+        str message
+    }
+    Organization {
+        str id
+        str created_at
+        Optional metadata
+        str name
+        AccountType account_type
+        Optional parent_org_id
+        List contact_emails
+    }
+    PaymentRequest {
+        float amount
+        str currency
+        str payment_method
+    }
+    PaymentResponse {
+        str transaction_id
+        str status
+    }
+    Product {
+        int id
+        str name
+        float price
+        str category
+    }
+    Token {
+        str access_token
+        str token_type
+        int expires_in
+    }
+    User {
+        int id
+        str username
+        str email
+        str role
+        Optional bio
+        bool is_active
+        Optional last_login
+        List tags
+        Optional address
+        Optional phone_number
+        str preferred_language
+        Optional secret_note
+    }
+    UserCreate {
+        str username
+        str email
+        Optional bio
+    }
+    Vehicle {
+        str vin
+        str make
+        str model
+        int year
+    }
+    VehicleCreate {
+        str vin
+        str make
+        str model
+        int year
+    }
+    WarehouseLocation {
+        str aisle
+        str shelf
+        str bin
+    }
+    InventoryItem ||--o{ WarehouseLocation : &quot;contains/references&quot;
+    Invoice ||--o{ InvoiceItem : &quot;contains/references&quot;
+    Invoice ||--o{ Organization : &quot;contains/references&quot;
+    User ||--o{ Address : &quot;contains/references&quot;
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="data-dictionary">
+<h2>Data Dictionary<a class="headerlink" href="#data-dictionary" title="Link to this heading"></a></h2>
+<section id="entity-token">
+<h3>Entity: Token<a class="headerlink" href="#entity-token" title="Link to this heading"></a></h3>
+<p>Authentication token details.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">access_token</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The JWT access token.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">token_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The type of token (e.g., ‘Bearer’).</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">expires_in</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>The duration in seconds until the token expires.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3600</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-notification">
+<h3>Entity: Notification<a class="headerlink" href="#entity-notification" title="Link to this heading"></a></h3>
+<p>Notification model for system alerts and user messages.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Unique identifier for the notification.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">user_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>The ID of the user receiving the notification.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Literal</span></code></p></td>
+<td><p>The delivery channel.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The actual notification content.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">read</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>Whether the notification has been read.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-notificationcreate">
+<h3>Entity: NotificationCreate<a class="headerlink" href="#entity-notificationcreate" title="Link to this heading"></a></h3>
+<p>Payload to trigger a new notification.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">user_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>The ID of the target user.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Literal</span></code></p></td>
+<td><p>The desired delivery channel.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The message payload.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-baseentity">
+<h3>Entity: BaseEntity<a class="headerlink" href="#entity-baseentity" title="Link to this heading"></a></h3>
+<p>Base class for all enterprise entities.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Unique identifier.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">created_at</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Creation ISO timestamp.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">metadata</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Optional</span></code></p></td>
+<td><p>Extensible metadata dictionary.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-organization">
+<h3>Entity: Organization<a class="headerlink" href="#entity-organization" title="Link to this heading"></a></h3>
+<p>An enterprise organization.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Unique identifier.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">created_at</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Creation ISO timestamp.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">metadata</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Optional</span></code></p></td>
+<td><p>Extensible metadata dictionary.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Name of the organization.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">account_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AccountType</span></code></p></td>
+<td><p>The subscription tier.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AccountType.BASIC</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parent_org_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Optional</span></code></p></td>
+<td><p>Parent organization ID if applicable (forward reference test).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">contact_emails</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">List</span></code></p></td>
+<td><p>List of administrative contact emails.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-invoice">
+<h3>Entity: Invoice<a class="headerlink" href="#entity-invoice" title="Link to this heading"></a></h3>
+<p>A billing invoice for an organization.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">invoice_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Unique invoice number.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">organization</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Organization</span></code></p></td>
+<td><p>The organization being billed.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">items</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">List</span></code></p></td>
+<td><p>List of line items on the invoice.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">total_amount</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>Total amount due.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">is_paid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>Whether the invoice has been settled.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-invoiceitem">
+<h3>Entity: InvoiceItem<a class="headerlink" href="#entity-invoiceitem" title="Link to this heading"></a></h3>
+<p>Line item on an enterprise invoice.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">description</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Line item description.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">quantity</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Quantity of items.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">unit_price</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>Price per unit.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-inventoryitem">
+<h3>Entity: InventoryItem<a class="headerlink" href="#entity-inventoryitem" title="Link to this heading"></a></h3>
+<p>An item stored in the warehouse.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sku</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Stock Keeping Unit.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;lambda&gt;()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Product name.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Literal</span></code></p></td>
+<td><p>Current stock status.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">available</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">location</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Optional</span></code></p></td>
+<td><p>Where the item is physically located.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">weight_kg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Union</span></code></p></td>
+<td><p>Weight of the item in kilograms (testing Union).</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-warehouselocation">
+<h3>Entity: WarehouseLocation<a class="headerlink" href="#entity-warehouselocation" title="Link to this heading"></a></h3>
+<p>A physical storage location.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">aisle</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Aisle identifier.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">shelf</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Shelf level.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Specific bin number.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-paymentrequest">
+<h3>Entity: PaymentRequest<a class="headerlink" href="#entity-paymentrequest" title="Link to this heading"></a></h3>
+<p>Model used to initiate a payment transaction.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">amount</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>The transaction amount.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">currency</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The currency code (e.g., ‘USD’).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">USD</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">payment_method</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The chosen payment method (e.g., ‘credit_card’, ‘paypal’).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">credit_card</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-paymentresponse">
+<h3>Entity: PaymentResponse<a class="headerlink" href="#entity-paymentresponse" title="Link to this heading"></a></h3>
+<p>Response returned after a payment attempt.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">transaction_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Unique gateway transaction ID.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Payment status (e.g., ‘success’, ‘failed’).</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-address">
+<h3>Entity: Address<a class="headerlink" href="#entity-address" title="Link to this heading"></a></h3>
+<p>Physical address of a user.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">street</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Street name and number.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">city</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>City name.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">zip_code</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Postal zip code.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-product">
+<h3>Entity: Product<a class="headerlink" href="#entity-product" title="Link to this heading"></a></h3>
+<p>Model representing a store product.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Unique product ID.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Name of the product.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">price</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>Price in USD.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">category</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Product category (e.g., ‘Electronics’).</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-user">
+<h3>Entity: User<a class="headerlink" href="#entity-user" title="Link to this heading"></a></h3>
+<p>User model representing an account in the system.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>The unique identifier for the user.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">username</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The login username.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">email</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The email address of the user.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">role</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The user’s role (e.g., ‘admin’, ‘user’).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bio</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Optional</span></code></p></td>
+<td><p>A short biography of the user.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">is_active</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>Whether the user account is currently active.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">last_login</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Optional</span></code></p></td>
+<td><p>Timestamp of the last successful login.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tags</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">List</span></code></p></td>
+<td><p>Categorization tags for the user.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">address</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Optional</span></code></p></td>
+<td><p>User’s primary mailing address.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">phone_number</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Optional</span></code></p></td>
+<td><p>The user’s contact phone number.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">preferred_language</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The user’s preferred language code.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">en</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">secret_note</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Optional</span></code></p></td>
+<td><p>A private note for administrative use only.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-usercreate">
+<h3>Entity: UserCreate<a class="headerlink" href="#entity-usercreate" title="Link to this heading"></a></h3>
+<p>Model used to create a new User entry.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">username</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The chosen username.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">email</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The associated email address.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bio</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Optional</span></code></p></td>
+<td><p>A short biography for the profile.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-vehicle">
+<h3>Entity: Vehicle<a class="headerlink" href="#entity-vehicle" title="Link to this heading"></a></h3>
+<p>A motorized vehicle registered in the system.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The unique Vehicle Identification Number.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">make</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The manufacturer (e.g., Toyota, Ford).</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">model</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The specific car model.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">year</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>The manufacturing year.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-vehiclecreate">
+<h3>Entity: VehicleCreate<a class="headerlink" href="#entity-vehiclecreate" title="Link to this heading"></a></h3>
+<p>Payload to register a new vehicle.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The unique Vehicle Identification Number.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">make</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The manufacturer (e.g., Toyota, Ford).</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">model</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>The specific car model.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">year</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>The manufacturing year.</p></td>
+<td><p><em>Required</em></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, AutoCodeDoc Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -49,20 +49,20 @@ graph TD
     api_main --> api_payments
     api_main --> api_users
     api_main --> api_vehicles
-    svc_user_service --> mdl_user
-    svc_billing_service --> mdl_invoice
-    svc_billing_service --> mdl_organization
-    svc_org_service --> mdl_organization
-    api_vehicles --> mdl_vehicle
-    api_vehicles --> svc_vehicle_service
-    api_payments --> svc_payment_service
-    api_inventory --> mdl_stock
-    api_organizations --> mdl_organization
-    api_organizations --> svc_org_service
     api_billing --> mdl_invoice
     api_billing --> mdl_organization
     api_billing --> svc_billing_service
+    api_inventory --> mdl_stock
     api_notifications --> mdl_notification
     api_notifications --> svc_notification_service
+    api_organizations --> mdl_organization
+    api_organizations --> svc_org_service
+    api_payments --> svc_payment_service
     api_users --> mdl_user
     api_users --> svc_user_service
+    api_vehicles --> mdl_vehicle
+    api_vehicles --> svc_vehicle_service
+    svc_billing_service --> mdl_invoice
+    svc_billing_service --> mdl_organization
+    svc_org_service --> mdl_organization
+    svc_user_service --> mdl_user

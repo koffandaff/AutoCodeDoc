@@ -1,0 +1,19 @@
+app.models.ecommerce package
+============================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   app.models.ecommerce.billing
+   app.models.ecommerce.inventory
+
+Module contents
+---------------
+
+.. automodule:: app.models.ecommerce
+   :members:
+   :show-inheritance:
+   :undoc-members:

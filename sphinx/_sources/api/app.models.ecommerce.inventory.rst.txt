@@ -1,0 +1,21 @@
+app.models.ecommerce.inventory package
+======================================
+
+Submodules
+----------
+
+app.models.ecommerce.inventory.stock module
+-------------------------------------------
+
+.. automodule:: app.models.ecommerce.inventory.stock
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: app.models.ecommerce.inventory
+   :members:
+   :show-inheritance:
+   :undoc-members:

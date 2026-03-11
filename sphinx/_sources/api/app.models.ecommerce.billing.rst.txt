@@ -1,0 +1,21 @@
+app.models.ecommerce.billing package
+====================================
+
+Submodules
+----------
+
+app.models.ecommerce.billing.invoice module
+-------------------------------------------
+
+.. automodule:: app.models.ecommerce.billing.invoice
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: app.models.ecommerce.billing
+   :members:
+   :show-inheritance:
+   :undoc-members:

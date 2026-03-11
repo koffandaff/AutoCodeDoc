@@ -1,0 +1,77 @@
+app.api package
+===============
+
+Submodules
+----------
+
+app.api.auth module
+-------------------
+
+.. automodule:: app.api.auth
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+app.api.billing module
+----------------------
+
+.. automodule:: app.api.billing
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+app.api.inventory module
+------------------------
+
+.. automodule:: app.api.inventory
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+app.api.notifications module
+----------------------------
+
+.. automodule:: app.api.notifications
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+app.api.organizations module
+----------------------------
+
+.. automodule:: app.api.organizations
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+app.api.payments module
+-----------------------
+
+.. automodule:: app.api.payments
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+app.api.users module
+--------------------
+
+.. automodule:: app.api.users
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+app.api.vehicles module
+-----------------------
+
+.. automodule:: app.api.vehicles
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: app.api
+   :members:
+   :show-inheritance:
+   :undoc-members:

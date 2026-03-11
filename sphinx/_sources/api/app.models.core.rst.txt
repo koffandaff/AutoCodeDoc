@@ -1,0 +1,29 @@
+app.models.core package
+=======================
+
+Submodules
+----------
+
+app.models.core.notification module
+-----------------------------------
+
+.. automodule:: app.models.core.notification
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+app.models.core.organization module
+-----------------------------------
+
+.. automodule:: app.models.core.organization
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: app.models.core
+   :members:
+   :show-inheritance:
+   :undoc-members:

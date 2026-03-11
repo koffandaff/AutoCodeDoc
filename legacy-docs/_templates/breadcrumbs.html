@@ -1,0 +1,11 @@
+{# Override RTD breadcrumbs to inject persistent MkDocs link #}
+{% extends "!breadcrumbs.html" %}
+
+{% block breadcrumbs %}
+{{ super() }}
+<li style="float: right;">
+    <a href="{{ mkdocs_url }}" class="mkdocs-link" title="Switch to MkDocs Documentation">
+        📘 MkDocs Site
+    </a>
+</li>
+{% endblock %}

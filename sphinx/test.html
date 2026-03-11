@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🚀 Documentation Automation &amp; Verification &mdash; AutoCodeDoc Platform</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6985fe1f" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            AutoCodeDoc Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guides/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/contributing.html">Contributing Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/app/index.html">app</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Architecture</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture/system_diagram.html">System Architecture Diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture/er_diagram.html">Entity-Relationship Diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture/cross_repo_flow.html">Cross-Repository Data Flow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://koffandaff.github.io/AutoCodeDoc/legacy-docs/">MkDocs Site</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AutoCodeDoc Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          
+<div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">🚀 Documentation Automation &amp; Verification</li>
+<li style="float: right;">
+    <a href="/AutoCodeDoc/legacy-docs/" class="mkdocs-link" title="Switch to MkDocs Documentation">
+        📘 MkDocs Site
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/koffandaff/AutoCodeDoc/blob/main/doc_automation_platform/docs/test.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="documentation-automation-verification">
+<h1>🚀 Documentation Automation &amp; Verification<a class="headerlink" href="#documentation-automation-verification" title="Link to this heading"></a></h1>
+<p>This guide explains how to ensure your documentation stays in sync with your code and how to verify it.</p>
+<section id="automatic-updates">
+<h2>🔄 Automatic Updates<a class="headerlink" href="#automatic-updates" title="Link to this heading"></a></h2>
+<p>The documentation is configured to <strong>automatically update</strong> every time you build or serve the site. This is handled by the <code class="docutils literal notranslate"><span class="pre">gen-files</span></code> plugin in <code class="docutils literal notranslate"><span class="pre">mkdocs.yml</span></code>, which triggers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/gen_ref_pages.py</span></code>: Generates the Python API reference.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/gen_architecture.py</span></code>: Updates the system architecture tree.</p></li>
+</ul>
+<section id="the-one-command-to-rule-them-all">
+<h3>The “One Command” to Rule Them All<a class="headerlink" href="#the-one-command-to-rule-them-all" title="Link to this heading"></a></h3>
+<p>Run this from the project root (<code class="docutils literal notranslate"><span class="pre">doc_automation_platform</span></code>) to start a live-reloading server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>scripts/run_pipeline.py
+</pre></div>
+</div>
+<blockquote>
+<div><p>[!TIP]
+<strong>Live Updates</strong>: While the server is running, any changes you make to <code class="docutils literal notranslate"><span class="pre">.py</span></code> files in <code class="docutils literal notranslate"><span class="pre">backend/app/</span></code> or <code class="docutils literal notranslate"><span class="pre">.md</span></code> files in <code class="docutils literal notranslate"><span class="pre">docs/</span></code> will be reflected immediately in the browser.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="unified-pipeline-ci-cd-ready">
+<h2>🚀 Unified Pipeline (CI/CD Ready)<a class="headerlink" href="#unified-pipeline-ci-cd-ready" title="Link to this heading"></a></h2>
+<p>The easiest way to check everything is to run the master pipeline script. This is what you would use in GitHub Actions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run integrity checks + build + serve</span>
+.<span class="se">\v</span>env<span class="se">\S</span>cripts<span class="se">\p</span>ython.exe<span class="w"> </span>scripts/run_pipeline.py<span class="w"> </span>--serve
+
+<span class="c1"># Build only (for CI/CD)</span>
+.<span class="se">\v</span>env<span class="se">\S</span>cripts/python.exe<span class="w"> </span>scripts/run_pipeline.py<span class="w"> </span>--build-only
+</pre></div>
+</div>
+</section>
+<section id="verification-checklist">
+<h2>🧪 Verification Checklist<a class="headerlink" href="#verification-checklist" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Start the server</strong> using the command above.</p></li>
+<li><p><strong>Open</strong> <a class="reference external" href="http://127.0.0.1:8001/AutoCodeDoc/">http://127.0.0.1:8001/AutoCodeDoc/</a> in your browser.</p></li>
+<li><p><strong>Check System Design</strong>: Click <strong>Design &gt; Overview</strong> to see the architecture tree.</p></li>
+<li><p><strong>Check API Docs</strong>: Click <strong>API Reference &gt; API &gt; app &gt; api &gt; auth</strong> to verify the code reference.</p></li>
+<li><p><strong>Verify No 404s</strong>: Every link in the sidebar should now resolve correctly.</p></li>
+<li><p><strong>Documentation Integrity</strong></p>
+<ul class="simple">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">.\venv\Scripts\python.exe</span> <span class="pre">scripts/check_doc_sync.py</span></code></p></li>
+<li><p>Verify it returns “All fields are correctly documented!”</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="troubleshooting">
+<h2>🛠️ Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p>If you don’t see your changes:</p>
+<ul class="simple">
+<li><p>Check the terminal for any Python errors in the generation scripts.</p></li>
+<li><p>Ensure you have saved your code changes.</p></li>
+<li><p>Restart the <code class="docutils literal notranslate"><span class="pre">mkdocs</span> <span class="pre">serve</span></code> command.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, AutoCodeDoc Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
